@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package novacommerce.catalog.v1;
+
+import "proto/common/v1/common.proto";
+
+service CatalogService {
+  rpc GetProduct(GetProductRequest) returns (ProductResponse);
+  rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
+}
+
+message GetProductRequest {
+  string product_id = 1;
+  string sku = 2;
+}
+
+message ListProductsRequest {
+  novacommerce.common.v1.PaginationRequest pagination = 1;
+  string category_id = 2;
+  string search_query = 3;
+}
+
+message ProductResponse {
+  string id = 1;
+  string sku = 2;
+  string name = 3;
+  string slug = 4;
+  string description = 5;
+  string category_id = 6;
+  novacommerce.common.v1.Money base_price = 7;
+  bool is_active = 8;
+  repeated string tags = 9;
+}
+
+message ListProductsResponse {
+  repeated ProductResponse products = 1;
+  novacommerce.common.v1.PaginationMetadata pagination = 2;
+}

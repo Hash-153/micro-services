@@ -1,0 +1,29 @@
+global:
+  environment: production
+  region: us-east-1
+  domain: api.novacommerce.io
+
+replicaCounts:
+  gateway: 2
+  auth: 3
+  user: 2
+  catalog: 3
+  order: 3
+  payment: 3
+  fulfillment: 2
+  notification: 2
+  analytics: 2
+  inventory: 3
+
+resources:
+  default:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+autoscaling:
+  enabled: true
+  targetCPUUtilizationPercentage: 70

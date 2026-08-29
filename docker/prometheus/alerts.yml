@@ -1,0 +1,18 @@
+groups:
+  - name: novacommerce_alerts
+    rules:
+      - alert: ServiceHighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} experiencing >5% 5xx error rate"
+
+      - alert: HighMemoryUtilization
+        expr: container_memory_usage_bytes / container_spec_memory_limit_bytes > 0.85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.container }} memory usage exceeds 85%"

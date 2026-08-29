@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaymentTransactionEntity",
+  "type": "object",
+  "required": [
+    "id",
+    "transactionReference",
+    "orderId",
+    "userId",
+    "amount",
+    "status",
+    "methodType",
+    "provider",
+    "idempotencyKey",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "transactionReference": {
+      "type": "string"
+    },
+    "orderId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "amount": {
+      "$ref": "ProductEntity.json#/properties/basePrice"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "REQUIRES_ACTION",
+        "PROCESSING",
+        "AUTHORIZED",
+        "CAPTURED",
+        "FAILED",
+        "CANCELLED",
+        "REFUNDED",
+        "PARTIALLY_REFUNDED",
+        "DISPUTED",
+        "CHARGEBACK"
+      ]
+    },
+    "methodType": {
+      "type": "string",
+      "enum": [
+        "CREDIT_CARD",
+        "DEBIT_CARD",
+        "BANK_TRANSFER",
+        "PAYPAL",
+        "APPLE_PAY",
+        "GOOGLE_PAY",
+        "CRYPTO",
+        "STORE_CREDIT",
+        "GIFT_CARD"
+      ]
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "STRIPE",
+        "PAYPAL",
+        "ADYEN",
+        "MOCK",
+        "INTERNAL_LEDGER"
+      ]
+    },
+    "providerTransactionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "idempotencyKey": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

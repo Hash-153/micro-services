@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package novacommerce.fulfillment.v1;
+
+import "proto/common/v1/common.proto";
+
+service FulfillmentService {
+  rpc CreateShipment(CreateShipmentRequest) returns (ShipmentResponse);
+  rpc GetShipmentStatus(GetShipmentStatusRequest) returns (ShipmentResponse);
+}
+
+message CreateShipmentRequest {
+  string order_id = 1;
+  novacommerce.common.v1.Address destination_address = 2;
+  string carrier_code = 3;
+}
+
+message GetShipmentStatusRequest {
+  string shipment_id = 1;
+  string tracking_number = 2;
+}
+
+message ShipmentResponse {
+  string shipment_id = 1;
+  string shipment_number = 2;
+  string tracking_number = 3;
+  string status = 4;
+  string carrier = 5;
+  string tracking_url = 6;
+}

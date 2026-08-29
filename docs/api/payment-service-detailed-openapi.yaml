@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Payment & Ledger Service
+  version: 1.0.0
+  description: Exhaustive OpenAPI 3.0 specification for Payment & Ledger Service with comprehensive schema validation.
+servers:
+  - url: http://localhost:8000/api/v1/payment
+    description: API Gateway Proxy
+paths:
+  /payments/authorize:
+    post:
+      summary: Authorize payment transaction
+      operationId: payment_post__payments_authorize
+      tags:
+        - Payment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /payments/capture:
+    post:
+      summary: Capture authorized payment
+      operationId: payment_post__payments_capture
+      tags:
+        - Payment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /payments/refund:
+    post:
+      summary: Execute refund
+      operationId: payment_post__payments_refund
+      tags:
+        - Payment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /ledger/accounts:
+    get:
+      summary: List chart of accounts
+      operationId: payment_get__ledger_accounts
+      tags:
+        - Payment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /ledger/journal-entries:
+    get:
+      summary: List journal entries
+      operationId: payment_get__ledger_journal-entries
+      tags:
+        - Payment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /webhooks/stripe:
+    post:
+      summary: Stripe payment webhook endpoint
+      operationId: payment_post__webhooks_stripe
+      tags:
+        - Payment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error

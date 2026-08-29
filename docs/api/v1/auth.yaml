@@ -1,0 +1,1187 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Auth & Identity Management Service
+  version: 1.0.0
+  description: |
+    Comprehensive production OpenAPI 3.0 specification for Auth & Identity Management Service.
+    Adheres strictly to RFC-7807 problem details, ISO 8601 timestamps, and JSON-Schema Draft 7 validation.
+  contact:
+    name: NovaCommerce Engineering Architecture
+    email: architecture@novacommerce.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8000/api/v1/auth
+    description: API Gateway Proxy Endpoint
+  - url: http://localhost:8001
+    description: Direct Microservice Local Container Port
+
+security:
+  - BearerAuth: []
+
+paths:
+  /register:
+    post:
+      summary: Register New Customer Account
+      description: |
+        Registers a new user account with argon2id password hashing and fires UserRegisteredEvent.
+      operationId: auth_post__register
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUserPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /login:
+    post:
+      summary: Authenticate User Credentials
+      description: |
+        Authenticates credentials and returns JWT access/refresh token pair.
+      operationId: auth_post__login
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUserPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /refresh:
+    post:
+      summary: Refresh Access Token
+      description: |
+        Exchanges valid refresh token for a new access token.
+      operationId: auth_post__refresh
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /me:
+    get:
+      summary: Get Authenticated User Profile
+      description: |
+        Returns identity claims and permissions for the authenticated token.
+      operationId: auth_get__me
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /mfa/setup:
+    post:
+      summary: Setup Two-Factor Authentication
+      description: |
+        Generates TOTP secret key and QR code string for authenticator apps.
+      operationId: auth_post__mfa_setup
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MfaSetupResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MfaSetupResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /mfa/verify:
+    post:
+      summary: Verify MFA Security Code
+      description: |
+        Validates 6-digit TOTP token to activate two-factor authentication.
+      operationId: auth_post__mfa_verify
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MfaVerifyPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /mfa/disable:
+    post:
+      summary: Disable Two-Factor Authentication
+      description: |
+        Disables two-factor authentication with password re-verification.
+      operationId: auth_post__mfa_disable
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MfaDisablePayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /password/reset-request:
+    post:
+      summary: Request Password Reset Link
+      description: |
+        Sends cryptographic password reset token to user's registered email.
+      operationId: auth_post__password_reset-request
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetRequestPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /password/reset-confirm:
+    post:
+      summary: Confirm Password Reset
+      description: |
+        Updates user password with valid reset token.
+      operationId: auth_post__password_reset-confirm
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirmPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /sessions:
+    get:
+      summary: List Active User Sessions
+      description: |
+        Returns list of active login sessions and device fingerprints.
+      operationId: auth_get__sessions
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionListResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionListResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /sessions/{id}/revoke:
+    post:
+      summary: Revoke Specific Session
+      description: |
+        Terminates specific user session and revokes refresh token.
+      operationId: auth_post__sessions_id_revoke
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /oauth2/authorize:
+    get:
+      summary: OAuth2 Authorization Endpoint
+      description: |
+        Handles OAuth2 authorization code grant flow.
+      operationId: auth_get__oauth2_authorize
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2AuthResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2AuthResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /oauth2/token:
+    post:
+      summary: OAuth2 Token Exchange
+      description: |
+        Issues OAuth2 access tokens via authorization code or client credentials.
+      operationId: auth_post__oauth2_token
+      tags:
+        - Auth
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuth2TokenPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2TokenResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2TokenResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter RS256 or HS256 signed JSON Web Token
+
+  schemas:
+    SuccessResponse:
+      type: object
+      required: [success, statusCode]
+      properties:
+        success:
+          type: boolean
+          example: true
+        statusCode:
+          type: integer
+          example: 200
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Operation completed successfully.
+
+    ApiErrorResponse:
+      type: object
+      required: [success, statusCode, error]
+      properties:
+        success:
+          type: boolean
+          example: false
+        statusCode:
+          type: integer
+          example: 400
+        error:
+          type: object
+          required: [code, message, timestamp]
+          properties:
+            code:
+              type: string
+              example: ERR_VALIDATION_ERROR
+            message:
+              type: string
+              example: Input validation failed for request payload.
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    example: email
+                  message:
+                    type: string
+                    example: Must be a valid email format.
+            correlationId:
+              type: string
+              format: uuid
+              example: 7f3b8c92-1a4e-4b6f-8d9e-0f1a2b3c4d5e
+            timestamp:
+              type: string
+              format: date-time
+              example: '2026-08-29T10:00:00.000Z'
+
+    Money:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: integer
+          description: Value stored in minor currency units (cents, pence, etc.)
+          example: 2999
+        currency:
+          type: string
+          enum: [USD, EUR, GBP, CAD, AUD, JPY, CHF, SGD, INR]
+          example: USD
+
+    Address:
+      type: object
+      required: [recipientName, streetLine1, city, stateOrProvince, postalCode, countryCode]
+      properties:
+        id:
+          type: string
+          format: uuid
+        recipientName:
+          type: string
+          example: John Doe
+        streetLine1:
+          type: string
+          example: 100 Market St
+        streetLine2:
+          type: string
+          example: Suite 500
+        city:
+          type: string
+          example: San Francisco
+        stateOrProvince:
+          type: string
+          example: CA
+        postalCode:
+          type: string
+          example: '94105'
+        countryCode:
+          type: string
+          example: US
+        isDefaultShipping:
+          type: boolean
+          example: true
+        isDefaultBilling:
+          type: boolean
+          example: true

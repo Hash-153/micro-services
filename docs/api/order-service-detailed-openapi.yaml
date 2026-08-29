@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Order & Saga Service
+  version: 1.0.0
+  description: Exhaustive OpenAPI 3.0 specification for Order & Saga Service with comprehensive schema validation.
+servers:
+  - url: http://localhost:8000/api/v1/order
+    description: API Gateway Proxy
+paths:
+  /orders:
+    post:
+      summary: Create new customer order
+      operationId: order_post__orders
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /orders:
+    get:
+      summary: List customer orders
+      operationId: order_get__orders
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /orders/{id}:
+    get:
+      summary: Get order details
+      operationId: order_get__orders_id
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /orders/{id}/cancel:
+    post:
+      summary: Cancel pending order
+      operationId: order_post__orders_id_cancel
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /orders/{id}/checkout-saga:
+    post:
+      summary: Trigger distributed checkout saga
+      operationId: order_post__orders_id_checkout-saga
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /orders/{id}/refund:
+    post:
+      summary: Initiate order refund
+      operationId: order_post__orders_id_refund
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error

@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InventoryStockEntity",
+  "type": "object",
+  "required": [
+    "id",
+    "sku",
+    "warehouseId",
+    "onHandQuantity",
+    "reservedQuantity",
+    "allocatedQuantity",
+    "safetyStockThreshold",
+    "reorderQuantity",
+    "version",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "warehouseId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "onHandQuantity": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reservedQuantity": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "allocatedQuantity": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "safetyStockThreshold": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reorderQuantity": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "binLocation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package novacommerce.order.v1;
+
+import "proto/common/v1/common.proto";
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (OrderResponse);
+  rpc GetOrder(GetOrderRequest) returns (OrderResponse);
+}
+
+message OrderItem {
+  string sku = 1;
+  int32 quantity = 2;
+  novacommerce.common.v1.Money unit_price = 3;
+}
+
+message CreateOrderRequest {
+  string user_id = 1;
+  repeated OrderItem items = 2;
+  novacommerce.common.v1.Address shipping_address = 3;
+  novacommerce.common.v1.Address billing_address = 4;
+  string idempotency_key = 5;
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message OrderResponse {
+  string id = 1;
+  string order_number = 2;
+  string status = 3;
+  novacommerce.common.v1.Money total_amount = 4;
+  repeated OrderItem items = 5;
+  string created_at = 6;
+}

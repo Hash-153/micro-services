@@ -1,0 +1,32 @@
+name: Code Quality & Security
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  static-analysis:
+    name: ESLint & TypeScript Checking
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+
+  test-coverage:
+    name: Jest Test Coverage Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:coverage

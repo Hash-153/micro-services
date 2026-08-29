@@ -1,0 +1,98 @@
+[
+  {
+    "accountNumber": "1010",
+    "name": "Operating Cash & Bank Account",
+    "type": "ASSET",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "1020",
+    "name": "Stripe Processor Clearing Account",
+    "type": "ASSET",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "1030",
+    "name": "PayPal Processor Clearing Account",
+    "type": "ASSET",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "1040",
+    "name": "Accounts Receivable",
+    "type": "ASSET",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "1050",
+    "name": "Inventory Asset - On-Hand Stock",
+    "type": "ASSET",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "2010",
+    "name": "Accounts Payable - Suppliers",
+    "type": "LIABILITY",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "2020",
+    "name": "Sales Tax Payable - State Jurisdictions",
+    "type": "LIABILITY",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "2030",
+    "name": "Unearned Revenue / Gift Card Liability",
+    "type": "LIABILITY",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "3010",
+    "name": "Common Stock Paid-in Capital",
+    "type": "EQUITY",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "3020",
+    "name": "Retained Earnings",
+    "type": "EQUITY",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "4010",
+    "name": "Product Sales Gross Revenue",
+    "type": "REVENUE",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "4020",
+    "name": "Shipping & Freight Income",
+    "type": "REVENUE",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "4090",
+    "name": "Sales Discounts & Promotions (Contra-Revenue)",
+    "type": "REVENUE",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "5010",
+    "name": "Cost of Goods Sold (COGS)",
+    "type": "EXPENSE",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "5020",
+    "name": "Carrier Freight & Delivery Expense",
+    "type": "EXPENSE",
+    "currency": "USD"
+  },
+  {
+    "accountNumber": "5030",
+    "name": "Payment Gateway Processing Interchange Fees",
+    "type": "EXPENSE",
+    "currency": "USD"
+  }
+]

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package novacommerce.payment.v1;
+
+import "proto/common/v1/common.proto";
+
+service PaymentService {
+  rpc AuthorizePayment(AuthorizePaymentRequest) returns (PaymentResponse);
+  rpc RefundPayment(RefundPaymentRequest) returns (PaymentResponse);
+}
+
+message AuthorizePaymentRequest {
+  string order_id = 1;
+  string user_id = 2;
+  novacommerce.common.v1.Money amount = 3;
+  string payment_method_token = 4;
+  string idempotency_key = 5;
+}
+
+message RefundPaymentRequest {
+  string payment_id = 1;
+  novacommerce.common.v1.Money amount = 2;
+  string reason = 3;
+}
+
+message PaymentResponse {
+  string payment_id = 1;
+  string status = 2;
+  string transaction_reference = 3;
+  novacommerce.common.v1.Money amount = 4;
+  string created_at = 5;
+}

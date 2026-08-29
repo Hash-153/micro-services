@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderEntity",
+  "type": "object",
+  "required": [
+    "id",
+    "orderNumber",
+    "userId",
+    "status",
+    "items",
+    "subtotalAmount",
+    "taxAmount",
+    "shippingFeeAmount",
+    "discountAmount",
+    "totalAmount",
+    "idempotencyKey",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "orderNumber": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "PENDING_PAYMENT",
+        "PAYMENT_AUTHORIZED",
+        "PAYMENT_FAILED",
+        "PROCESSING",
+        "INVENTORY_RESERVED",
+        "INVENTORY_ALLOCATION_FAILED",
+        "PACKED",
+        "DISPATCHED",
+        "IN_TRANSIT",
+        "OUT_FOR_DELIVERY",
+        "DELIVERED",
+        "CANCELLED",
+        "REFUND_REQUESTED",
+        "REFUNDED",
+        "PARTIALLY_REFUNDED",
+        "EXPIRED"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "orderId",
+          "sku",
+          "productName",
+          "unitPrice",
+          "quantity",
+          "subtotal",
+          "taxAmount",
+          "discountAmount",
+          "total"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "variantName": {
+            "type": "string"
+          },
+          "unitPrice": {
+            "$ref": "#/properties/subtotalAmount"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "subtotal": {
+            "$ref": "#/properties/subtotalAmount"
+          },
+          "taxAmount": {
+            "$ref": "#/properties/subtotalAmount"
+          },
+          "discountAmount": {
+            "$ref": "#/properties/subtotalAmount"
+          },
+          "total": {
+            "$ref": "#/properties/subtotalAmount"
+          }
+        }
+      }
+    },
+    "subtotalAmount": {
+      "$ref": "ProductEntity.json#/properties/basePrice"
+    },
+    "taxAmount": {
+      "$ref": "ProductEntity.json#/properties/basePrice"
+    },
+    "shippingFeeAmount": {
+      "$ref": "ProductEntity.json#/properties/basePrice"
+    },
+    "discountAmount": {
+      "$ref": "ProductEntity.json#/properties/basePrice"
+    },
+    "totalAmount": {
+      "$ref": "ProductEntity.json#/properties/basePrice"
+    },
+    "couponCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "paymentId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "shipmentId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Product Catalog Service
+  version: 1.0.0
+  description: Exhaustive OpenAPI 3.0 specification for Product Catalog Service with comprehensive schema validation.
+servers:
+  - url: http://localhost:8000/api/v1/catalog
+    description: API Gateway Proxy
+paths:
+  /products:
+    get:
+      summary: List products with filtering
+      operationId: catalog_get__products
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /products:
+    post:
+      summary: Create new product
+      operationId: catalog_post__products
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /products/{id}:
+    get:
+      summary: Get product by ID
+      operationId: catalog_get__products_id
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /products/{id}:
+    put:
+      summary: Update product attributes
+      operationId: catalog_put__products_id
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /products/{id}:
+    delete:
+      summary: Soft delete product
+      operationId: catalog_delete__products_id
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /categories:
+    get:
+      summary: List catalog categories
+      operationId: catalog_get__categories
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /categories:
+    post:
+      summary: Create product category
+      operationId: catalog_post__categories
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /search:
+    get:
+      summary: Full text fuzzy search
+      operationId: catalog_get__search
+      tags:
+        - Catalog
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error

@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-service
+  namespace: novacommerce
+  labels:
+    app: inventory-service
+    tier: microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: inventory-service
+  template:
+    metadata:
+      labels:
+        app: inventory-service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8009"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: novacommerce-workload-sa
+      containers:
+        - name: inventory-service
+          image: novacommerce/inventory-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8009
+              name: http
+            - containerPort: 50059
+              name: grpc
+          envFrom:
+            - configMapRef:
+                name: novacommerce-global-config
+            - secretRef:
+                name: novacommerce-secrets
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8009
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8009
+            initialDelaySeconds: 5
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-service-svc
+  namespace: novacommerce
+  labels:
+    app: inventory-service
+spec:
+  type: ClusterIP
+  selector:
+    app: inventory-service
+  ports:
+    - name: http
+      port: 8009
+      targetPort: 8009
+    - name: grpc
+      port: 50059
+      targetPort: 50059
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: inventory-service-hpa
+  namespace: novacommerce
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: inventory-service
+  minReplicas: 3
+  maxReplicas: 12
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

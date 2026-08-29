@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProductEntity",
+  "type": "object",
+  "required": [
+    "id",
+    "sku",
+    "name",
+    "slug",
+    "description",
+    "categoryId",
+    "basePrice",
+    "isActive",
+    "tags",
+    "attributes",
+    "images",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "sku": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string"
+    },
+    "categoryId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "basePrice": {
+      "type": "object",
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "enum": [
+            "USD",
+            "EUR",
+            "GBP",
+            "CAD",
+            "AUD",
+            "JPY",
+            "CHF",
+            "SGD",
+            "INR"
+          ]
+        }
+      }
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "boolean"
+        ]
+      }
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "sortOrder",
+          "isPrimary"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "altText": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "integer"
+          },
+          "isPrimary": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

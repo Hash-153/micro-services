@@ -1,0 +1,624 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Payments & Financial Ledger API
+  version: 1.0.0
+  description: |
+    Production-grade enterprise OpenAPI 3.0 specification for NovaCommerce Payments & Financial Ledger API.
+    Adheres strictly to RFC-7807 problem details, ISO 8601 timestamps, and JSON-Schema Draft 7 validation.
+  contact:
+    name: NovaCommerce Core Platform Engineering
+    email: api-platform@novacommerce.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8000
+    description: API Gateway Proxy Router
+  - url: http://localhost:8005
+    description: Direct Microservice Local Container
+
+security:
+  - BearerAuth: []
+
+paths:
+  /api/v1/payments/authorize:
+    post:
+      summary: Authorize Payment
+      description: |
+        Authorizes charge and posts balanced double-entry ledger journal.
+      operationId: payment_post__api_v1_payments_authorize
+      tags:
+        - Payment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizePaymentRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /api/v1/payments/capture:
+    post:
+      summary: Capture Payment
+      description: |
+        Settles authorized transaction into clearing account.
+      operationId: payment_post__api_v1_payments_capture
+      tags:
+        - Payment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapturePaymentRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /api/v1/payments/refund:
+    post:
+      summary: Execute Refund
+      description: |
+        Processes full or partial refund with ledger reversal entries.
+      operationId: payment_post__api_v1_payments_refund
+      tags:
+        - Payment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundPaymentRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /api/v1/payments/ledger/accounts:
+    get:
+      summary: Chart of Accounts
+      description: |
+        Returns double-entry general ledger chart of accounts.
+      operationId: payment_get__api_v1_payments_ledger_accounts
+      tags:
+        - Payment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountListResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountListResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /api/v1/payments/ledger/journal:
+    get:
+      summary: Journal Entries
+      description: |
+        Returns immutable double-entry journal entry log.
+      operationId: payment_get__api_v1_payments_ledger_journal
+      tags:
+        - Payment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalEntryListResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalEntryListResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /api/v1/payments/webhooks/stripe:
+    post:
+      summary: Stripe Webhook
+      description: |
+        Processes asynchronous webhook events from Stripe gateway.
+      operationId: payment_post__api_v1_payments_webhooks_stripe
+      tags:
+        - Payment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StripeWebhookPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter RS256 or HS256 signed JSON Web Token
+
+  schemas:
+    SuccessResponse:
+      type: object
+      required: [success, statusCode]
+      properties:
+        success:
+          type: boolean
+          example: true
+        statusCode:
+          type: integer
+          example: 200
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Operation completed successfully.
+
+    ApiErrorResponse:
+      type: object
+      required: [success, statusCode, error]
+      properties:
+        success:
+          type: boolean
+          example: false
+        statusCode:
+          type: integer
+          example: 400
+        error:
+          type: object
+          required: [code, message, timestamp]
+          properties:
+            code:
+              type: string
+              example: ERR_VALIDATION_ERROR
+            message:
+              type: string
+              example: Input validation failed for request payload.
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    example: email
+                  message:
+                    type: string
+                    example: Must be a valid email format.
+            correlationId:
+              type: string
+              format: uuid
+              example: 7f3b8c92-1a4e-4b6f-8d9e-0f1a2b3c4d5e
+            timestamp:
+              type: string
+              format: date-time
+              example: '2026-08-29T10:00:00.000Z'
+
+    Money:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: integer
+          description: Value stored in minor currency units (cents, pence, etc.)
+          example: 2999
+        currency:
+          type: string
+          enum: [USD, EUR, GBP, CAD, AUD, JPY, CHF, SGD, INR]
+          example: USD
+
+    Address:
+      type: object
+      required: [recipientName, streetLine1, city, stateOrProvince, postalCode, countryCode]
+      properties:
+        id:
+          type: string
+          format: uuid
+        recipientName:
+          type: string
+          example: John Doe
+        streetLine1:
+          type: string
+          example: 100 Market St
+        streetLine2:
+          type: string
+          example: Suite 500
+        city:
+          type: string
+          example: San Francisco
+        stateOrProvince:
+          type: string
+          example: CA
+        postalCode:
+          type: string
+          example: '94105'
+        countryCode:
+          type: string
+          example: US
+        isDefaultShipping:
+          type: boolean
+          example: true
+        isDefaultBilling:
+          type: boolean
+          example: true

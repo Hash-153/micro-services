@@ -1,0 +1,630 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Fulfillment & Courier Logistics Service
+  version: 1.0.0
+  description: |
+    Comprehensive production OpenAPI 3.0 specification for Fulfillment & Courier Logistics Service.
+    Adheres strictly to RFC-7807 problem details, ISO 8601 timestamps, and JSON-Schema Draft 7 validation.
+  contact:
+    name: NovaCommerce Engineering Architecture
+    email: architecture@novacommerce.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8000/api/v1/fulfillment
+    description: API Gateway Proxy Endpoint
+  - url: http://localhost:8006
+    description: Direct Microservice Local Container Port
+
+security:
+  - BearerAuth: []
+
+paths:
+  /shipments:
+    post:
+      summary: Generate Carrier Shipment
+      description: |
+        Generates carrier shipping label and tracking number.
+      operationId: fulfillment_post__shipments
+      tags:
+        - Fulfillment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateShipmentPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /shipments/{id}:
+    get:
+      summary: Get Shipment Tracking Details
+      description: |
+        Returns tracking status, carrier milestones, and ETA.
+      operationId: fulfillment_get__shipments_id
+      tags:
+        - Fulfillment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /rates:
+    post:
+      summary: Calculate Multi-Carrier Rates
+      description: |
+        Compares real-time quotes across FedEx, UPS, DHL, and USPS.
+      operationId: fulfillment_post__rates
+      tags:
+        - Fulfillment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateRatesPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateListResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateListResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /pack:
+    post:
+      summary: Calculate 3D Bin Packing
+      description: |
+        Calculates 3D box selection and dimensional weight optimization.
+      operationId: fulfillment_post__pack
+      tags:
+        - Fulfillment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PackingPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackingPlanResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackingPlanResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /manifests/generate:
+    post:
+      summary: Generate Carrier Daily Manifest
+      description: |
+        Generates end-of-day carrier pickup manifest.
+      operationId: fulfillment_post__manifests_generate
+      tags:
+        - Fulfillment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManifestPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /webhooks/tracking:
+    post:
+      summary: Ingest Carrier Tracking Webhook
+      description: |
+        Updates shipment tracking milestones in real time.
+      operationId: fulfillment_post__webhooks_tracking
+      tags:
+        - Fulfillment
+      parameters:
+        - name: x-correlation-id
+          in: header
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Distributed tracing correlation identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarrierWebhookPayload'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Bad request / Schema validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Missing or invalid authentication credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '403':
+          description: Insufficient RBAC role permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '404':
+          description: Requested resource was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '409':
+          description: Conflict / Idempotency lock active
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '422':
+          description: Unprocessable business entity state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '429':
+          description: Sliding window rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '500':
+          description: Internal server error / Saga execution rollback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Enter RS256 or HS256 signed JSON Web Token
+
+  schemas:
+    SuccessResponse:
+      type: object
+      required: [success, statusCode]
+      properties:
+        success:
+          type: boolean
+          example: true
+        statusCode:
+          type: integer
+          example: 200
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Operation completed successfully.
+
+    ApiErrorResponse:
+      type: object
+      required: [success, statusCode, error]
+      properties:
+        success:
+          type: boolean
+          example: false
+        statusCode:
+          type: integer
+          example: 400
+        error:
+          type: object
+          required: [code, message, timestamp]
+          properties:
+            code:
+              type: string
+              example: ERR_VALIDATION_ERROR
+            message:
+              type: string
+              example: Input validation failed for request payload.
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    example: email
+                  message:
+                    type: string
+                    example: Must be a valid email format.
+            correlationId:
+              type: string
+              format: uuid
+              example: 7f3b8c92-1a4e-4b6f-8d9e-0f1a2b3c4d5e
+            timestamp:
+              type: string
+              format: date-time
+              example: '2026-08-29T10:00:00.000Z'
+
+    Money:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: integer
+          description: Value stored in minor currency units (cents, pence, etc.)
+          example: 2999
+        currency:
+          type: string
+          enum: [USD, EUR, GBP, CAD, AUD, JPY, CHF, SGD, INR]
+          example: USD
+
+    Address:
+      type: object
+      required: [recipientName, streetLine1, city, stateOrProvince, postalCode, countryCode]
+      properties:
+        id:
+          type: string
+          format: uuid
+        recipientName:
+          type: string
+          example: John Doe
+        streetLine1:
+          type: string
+          example: 100 Market St
+        streetLine2:
+          type: string
+          example: Suite 500
+        city:
+          type: string
+          example: San Francisco
+        stateOrProvince:
+          type: string
+          example: CA
+        postalCode:
+          type: string
+          example: '94105'
+        countryCode:
+          type: string
+          example: US
+        isDefaultShipping:
+          type: boolean
+          example: true
+        isDefaultBilling:
+          type: boolean
+          example: true

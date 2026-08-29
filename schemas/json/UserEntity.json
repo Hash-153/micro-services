@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserEntity",
+  "type": "object",
+  "required": [
+    "id",
+    "email",
+    "passwordHash",
+    "role",
+    "status",
+    "kycStatus",
+    "isMfaEnabled",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "passwordHash": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "SUPER_ADMIN",
+        "ADMIN",
+        "OPERATIONS_MANAGER",
+        "INVENTORY_MANAGER",
+        "FINANCE_ANALYST",
+        "SUPPORT_AGENT",
+        "CUSTOMER",
+        "GUEST",
+        "SYSTEM_INTERNAL"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PENDING_VERIFICATION",
+        "SUSPENDED",
+        "DEACTIVATED",
+        "LOCKED"
+      ]
+    },
+    "kycStatus": {
+      "type": "string",
+      "enum": [
+        "NOT_SUBMITTED",
+        "PENDING_REVIEW",
+        "VERIFIED",
+        "REJECTED",
+        "EXPIRED"
+      ]
+    },
+    "organizationId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "isMfaEnabled": {
+      "type": "boolean"
+    },
+    "mfaSecret": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "failedLoginAttempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lockedUntil": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "lastLoginAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deletedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

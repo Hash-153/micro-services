@@ -1,0 +1,402 @@
+[
+  {
+    "id": "cat-parent-001",
+    "name": "Electronics",
+    "slug": "electronics",
+    "parentId": null,
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-01-01",
+    "name": "Electronics Subcategory 1",
+    "slug": "electronics-sub-1",
+    "parentId": "cat-parent-001",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-01-02",
+    "name": "Electronics Subcategory 2",
+    "slug": "electronics-sub-2",
+    "parentId": "cat-parent-001",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-01-03",
+    "name": "Electronics Subcategory 3",
+    "slug": "electronics-sub-3",
+    "parentId": "cat-parent-001",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-01-04",
+    "name": "Electronics Subcategory 4",
+    "slug": "electronics-sub-4",
+    "parentId": "cat-parent-001",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-002",
+    "name": "Computers",
+    "slug": "computers",
+    "parentId": null,
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-02-01",
+    "name": "Computers Subcategory 1",
+    "slug": "computers-sub-1",
+    "parentId": "cat-parent-002",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-02-02",
+    "name": "Computers Subcategory 2",
+    "slug": "computers-sub-2",
+    "parentId": "cat-parent-002",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-02-03",
+    "name": "Computers Subcategory 3",
+    "slug": "computers-sub-3",
+    "parentId": "cat-parent-002",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-02-04",
+    "name": "Computers Subcategory 4",
+    "slug": "computers-sub-4",
+    "parentId": "cat-parent-002",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-003",
+    "name": "Home & Kitchen",
+    "slug": "home-kitchen",
+    "parentId": null,
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-03-01",
+    "name": "Home & Kitchen Subcategory 1",
+    "slug": "home-kitchen-sub-1",
+    "parentId": "cat-parent-003",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-03-02",
+    "name": "Home & Kitchen Subcategory 2",
+    "slug": "home-kitchen-sub-2",
+    "parentId": "cat-parent-003",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-03-03",
+    "name": "Home & Kitchen Subcategory 3",
+    "slug": "home-kitchen-sub-3",
+    "parentId": "cat-parent-003",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-03-04",
+    "name": "Home & Kitchen Subcategory 4",
+    "slug": "home-kitchen-sub-4",
+    "parentId": "cat-parent-003",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-004",
+    "name": "Fashion",
+    "slug": "fashion",
+    "parentId": null,
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-04-01",
+    "name": "Fashion Subcategory 1",
+    "slug": "fashion-sub-1",
+    "parentId": "cat-parent-004",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-04-02",
+    "name": "Fashion Subcategory 2",
+    "slug": "fashion-sub-2",
+    "parentId": "cat-parent-004",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-04-03",
+    "name": "Fashion Subcategory 3",
+    "slug": "fashion-sub-3",
+    "parentId": "cat-parent-004",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-04-04",
+    "name": "Fashion Subcategory 4",
+    "slug": "fashion-sub-4",
+    "parentId": "cat-parent-004",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-005",
+    "name": "Sports & Outdoors",
+    "slug": "sports-outdoors",
+    "parentId": null,
+    "displayOrder": 5,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-05-01",
+    "name": "Sports & Outdoors Subcategory 1",
+    "slug": "sports-outdoors-sub-1",
+    "parentId": "cat-parent-005",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-05-02",
+    "name": "Sports & Outdoors Subcategory 2",
+    "slug": "sports-outdoors-sub-2",
+    "parentId": "cat-parent-005",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-05-03",
+    "name": "Sports & Outdoors Subcategory 3",
+    "slug": "sports-outdoors-sub-3",
+    "parentId": "cat-parent-005",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-05-04",
+    "name": "Sports & Outdoors Subcategory 4",
+    "slug": "sports-outdoors-sub-4",
+    "parentId": "cat-parent-005",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-006",
+    "name": "Automotive",
+    "slug": "automotive",
+    "parentId": null,
+    "displayOrder": 6,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-06-01",
+    "name": "Automotive Subcategory 1",
+    "slug": "automotive-sub-1",
+    "parentId": "cat-parent-006",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-06-02",
+    "name": "Automotive Subcategory 2",
+    "slug": "automotive-sub-2",
+    "parentId": "cat-parent-006",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-06-03",
+    "name": "Automotive Subcategory 3",
+    "slug": "automotive-sub-3",
+    "parentId": "cat-parent-006",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-06-04",
+    "name": "Automotive Subcategory 4",
+    "slug": "automotive-sub-4",
+    "parentId": "cat-parent-006",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-007",
+    "name": "Books & Media",
+    "slug": "books-media",
+    "parentId": null,
+    "displayOrder": 7,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-07-01",
+    "name": "Books & Media Subcategory 1",
+    "slug": "books-media-sub-1",
+    "parentId": "cat-parent-007",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-07-02",
+    "name": "Books & Media Subcategory 2",
+    "slug": "books-media-sub-2",
+    "parentId": "cat-parent-007",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-07-03",
+    "name": "Books & Media Subcategory 3",
+    "slug": "books-media-sub-3",
+    "parentId": "cat-parent-007",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-07-04",
+    "name": "Books & Media Subcategory 4",
+    "slug": "books-media-sub-4",
+    "parentId": "cat-parent-007",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-008",
+    "name": "Health & Wellness",
+    "slug": "health-wellness",
+    "parentId": null,
+    "displayOrder": 8,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-08-01",
+    "name": "Health & Wellness Subcategory 1",
+    "slug": "health-wellness-sub-1",
+    "parentId": "cat-parent-008",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-08-02",
+    "name": "Health & Wellness Subcategory 2",
+    "slug": "health-wellness-sub-2",
+    "parentId": "cat-parent-008",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-08-03",
+    "name": "Health & Wellness Subcategory 3",
+    "slug": "health-wellness-sub-3",
+    "parentId": "cat-parent-008",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-08-04",
+    "name": "Health & Wellness Subcategory 4",
+    "slug": "health-wellness-sub-4",
+    "parentId": "cat-parent-008",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-009",
+    "name": "Tools & Industrial",
+    "slug": "tools-industrial",
+    "parentId": null,
+    "displayOrder": 9,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-09-01",
+    "name": "Tools & Industrial Subcategory 1",
+    "slug": "tools-industrial-sub-1",
+    "parentId": "cat-parent-009",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-09-02",
+    "name": "Tools & Industrial Subcategory 2",
+    "slug": "tools-industrial-sub-2",
+    "parentId": "cat-parent-009",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-09-03",
+    "name": "Tools & Industrial Subcategory 3",
+    "slug": "tools-industrial-sub-3",
+    "parentId": "cat-parent-009",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-09-04",
+    "name": "Tools & Industrial Subcategory 4",
+    "slug": "tools-industrial-sub-4",
+    "parentId": "cat-parent-009",
+    "displayOrder": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat-parent-010",
+    "name": "Office Supplies",
+    "slug": "office-supplies",
+    "parentId": null,
+    "displayOrder": 10,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-10-01",
+    "name": "Office Supplies Subcategory 1",
+    "slug": "office-supplies-sub-1",
+    "parentId": "cat-parent-010",
+    "displayOrder": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-10-02",
+    "name": "Office Supplies Subcategory 2",
+    "slug": "office-supplies-sub-2",
+    "parentId": "cat-parent-010",
+    "displayOrder": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-10-03",
+    "name": "Office Supplies Subcategory 3",
+    "slug": "office-supplies-sub-3",
+    "parentId": "cat-parent-010",
+    "displayOrder": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat-sub-10-04",
+    "name": "Office Supplies Subcategory 4",
+    "slug": "office-supplies-sub-4",
+    "parentId": "cat-parent-010",
+    "displayOrder": 4,
+    "isActive": true
+  }
+]

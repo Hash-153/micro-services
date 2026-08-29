@@ -1,0 +1,27 @@
+{
+  "name": "@novacommerce/core-middleware",
+  "version": "1.0.0",
+  "description": "Express HTTP middleware for JWT verification, RBAC, rate limiting, and errors",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@novacommerce/core-types": "workspace:*",
+    "@novacommerce/core-logger": "workspace:*",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.0",
+    "rimraf": "^5.0.5"
+  }
+}

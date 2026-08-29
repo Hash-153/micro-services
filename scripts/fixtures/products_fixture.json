@@ -1,0 +1,2402 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "sku": "SKU-PROD-0001",
+    "name": "Enterprise Hardware Model 1 - Edition B",
+    "slug": "enterprise-hardware-model-1",
+    "description": "High reliability professional grade component model 1 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 1350,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 46,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 101000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "sku": "SKU-PROD-0002",
+    "name": "Enterprise Hardware Model 2 - Edition C",
+    "slug": "enterprise-hardware-model-2",
+    "description": "High reliability professional grade component model 2 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 1700,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 47,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 102000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "sku": "SKU-PROD-0003",
+    "name": "Enterprise Hardware Model 3 - Edition D",
+    "slug": "enterprise-hardware-model-3",
+    "description": "High reliability professional grade component model 3 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 2050,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 48,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 103000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "sku": "SKU-PROD-0004",
+    "name": "Enterprise Hardware Model 4 - Edition E",
+    "slug": "enterprise-hardware-model-4",
+    "description": "High reliability professional grade component model 4 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 2400,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 49,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 104000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000005",
+    "sku": "SKU-PROD-0005",
+    "name": "Enterprise Hardware Model 5 - Edition F",
+    "slug": "enterprise-hardware-model-5",
+    "description": "High reliability professional grade component model 5 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 2750,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 50,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 105000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000006",
+    "sku": "SKU-PROD-0006",
+    "name": "Enterprise Hardware Model 6 - Edition G",
+    "slug": "enterprise-hardware-model-6",
+    "description": "High reliability professional grade component model 6 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 3100,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 51,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 106000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000007",
+    "sku": "SKU-PROD-0007",
+    "name": "Enterprise Hardware Model 7 - Edition H",
+    "slug": "enterprise-hardware-model-7",
+    "description": "High reliability professional grade component model 7 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 3450,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 52,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 107000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000008",
+    "sku": "SKU-PROD-0008",
+    "name": "Enterprise Hardware Model 8 - Edition I",
+    "slug": "enterprise-hardware-model-8",
+    "description": "High reliability professional grade component model 8 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 3800,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 53,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 108000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000009",
+    "sku": "SKU-PROD-0009",
+    "name": "Enterprise Hardware Model 9 - Edition J",
+    "slug": "enterprise-hardware-model-9",
+    "description": "High reliability professional grade component model 9 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 4150,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 54,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 109000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000010",
+    "sku": "SKU-PROD-0010",
+    "name": "Enterprise Hardware Model 10 - Edition K",
+    "slug": "enterprise-hardware-model-10",
+    "description": "High reliability professional grade component model 10 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 4500,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 55,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 110000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000011",
+    "sku": "SKU-PROD-0011",
+    "name": "Enterprise Hardware Model 11 - Edition L",
+    "slug": "enterprise-hardware-model-11",
+    "description": "High reliability professional grade component model 11 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 4850,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 56,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 111000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000012",
+    "sku": "SKU-PROD-0012",
+    "name": "Enterprise Hardware Model 12 - Edition M",
+    "slug": "enterprise-hardware-model-12",
+    "description": "High reliability professional grade component model 12 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 5200,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 57,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 112000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000013",
+    "sku": "SKU-PROD-0013",
+    "name": "Enterprise Hardware Model 13 - Edition N",
+    "slug": "enterprise-hardware-model-13",
+    "description": "High reliability professional grade component model 13 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 5550,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 58,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 113000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000014",
+    "sku": "SKU-PROD-0014",
+    "name": "Enterprise Hardware Model 14 - Edition O",
+    "slug": "enterprise-hardware-model-14",
+    "description": "High reliability professional grade component model 14 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 5900,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 59,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 114000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000015",
+    "sku": "SKU-PROD-0015",
+    "name": "Enterprise Hardware Model 15 - Edition P",
+    "slug": "enterprise-hardware-model-15",
+    "description": "High reliability professional grade component model 15 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 6250,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 60,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 115000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000016",
+    "sku": "SKU-PROD-0016",
+    "name": "Enterprise Hardware Model 16 - Edition Q",
+    "slug": "enterprise-hardware-model-16",
+    "description": "High reliability professional grade component model 16 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 6600,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 61,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 116000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000017",
+    "sku": "SKU-PROD-0017",
+    "name": "Enterprise Hardware Model 17 - Edition R",
+    "slug": "enterprise-hardware-model-17",
+    "description": "High reliability professional grade component model 17 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 6950,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 62,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 117000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000018",
+    "sku": "SKU-PROD-0018",
+    "name": "Enterprise Hardware Model 18 - Edition S",
+    "slug": "enterprise-hardware-model-18",
+    "description": "High reliability professional grade component model 18 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 7300,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 63,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 118000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000019",
+    "sku": "SKU-PROD-0019",
+    "name": "Enterprise Hardware Model 19 - Edition T",
+    "slug": "enterprise-hardware-model-19",
+    "description": "High reliability professional grade component model 19 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 7650,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 64,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 119000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000020",
+    "sku": "SKU-PROD-0020",
+    "name": "Enterprise Hardware Model 20 - Edition U",
+    "slug": "enterprise-hardware-model-20",
+    "description": "High reliability professional grade component model 20 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 8000,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 65,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 120000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000021",
+    "sku": "SKU-PROD-0021",
+    "name": "Enterprise Hardware Model 21 - Edition V",
+    "slug": "enterprise-hardware-model-21",
+    "description": "High reliability professional grade component model 21 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 8350,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 66,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 121000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000022",
+    "sku": "SKU-PROD-0022",
+    "name": "Enterprise Hardware Model 22 - Edition W",
+    "slug": "enterprise-hardware-model-22",
+    "description": "High reliability professional grade component model 22 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 8700,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 67,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 122000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000023",
+    "sku": "SKU-PROD-0023",
+    "name": "Enterprise Hardware Model 23 - Edition X",
+    "slug": "enterprise-hardware-model-23",
+    "description": "High reliability professional grade component model 23 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 9050,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 68,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 123000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000024",
+    "sku": "SKU-PROD-0024",
+    "name": "Enterprise Hardware Model 24 - Edition Y",
+    "slug": "enterprise-hardware-model-24",
+    "description": "High reliability professional grade component model 24 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 9400,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 69,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 124000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000025",
+    "sku": "SKU-PROD-0025",
+    "name": "Enterprise Hardware Model 25 - Edition Z",
+    "slug": "enterprise-hardware-model-25",
+    "description": "High reliability professional grade component model 25 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 9750,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 70,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 125000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000026",
+    "sku": "SKU-PROD-0026",
+    "name": "Enterprise Hardware Model 26 - Edition A",
+    "slug": "enterprise-hardware-model-26",
+    "description": "High reliability professional grade component model 26 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 10100,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 71,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 126000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000027",
+    "sku": "SKU-PROD-0027",
+    "name": "Enterprise Hardware Model 27 - Edition B",
+    "slug": "enterprise-hardware-model-27",
+    "description": "High reliability professional grade component model 27 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 10450,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 72,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 127000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000028",
+    "sku": "SKU-PROD-0028",
+    "name": "Enterprise Hardware Model 28 - Edition C",
+    "slug": "enterprise-hardware-model-28",
+    "description": "High reliability professional grade component model 28 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 10800,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 73,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 128000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000029",
+    "sku": "SKU-PROD-0029",
+    "name": "Enterprise Hardware Model 29 - Edition D",
+    "slug": "enterprise-hardware-model-29",
+    "description": "High reliability professional grade component model 29 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 11150,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 74,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 129000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000030",
+    "sku": "SKU-PROD-0030",
+    "name": "Enterprise Hardware Model 30 - Edition E",
+    "slug": "enterprise-hardware-model-30",
+    "description": "High reliability professional grade component model 30 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 11500,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 75,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 130000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000031",
+    "sku": "SKU-PROD-0031",
+    "name": "Enterprise Hardware Model 31 - Edition F",
+    "slug": "enterprise-hardware-model-31",
+    "description": "High reliability professional grade component model 31 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 11850,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 76,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 131000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000032",
+    "sku": "SKU-PROD-0032",
+    "name": "Enterprise Hardware Model 32 - Edition G",
+    "slug": "enterprise-hardware-model-32",
+    "description": "High reliability professional grade component model 32 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 12200,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 77,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 132000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000033",
+    "sku": "SKU-PROD-0033",
+    "name": "Enterprise Hardware Model 33 - Edition H",
+    "slug": "enterprise-hardware-model-33",
+    "description": "High reliability professional grade component model 33 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 12550,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 78,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 133000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000034",
+    "sku": "SKU-PROD-0034",
+    "name": "Enterprise Hardware Model 34 - Edition I",
+    "slug": "enterprise-hardware-model-34",
+    "description": "High reliability professional grade component model 34 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 12900,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 79,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 134000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000035",
+    "sku": "SKU-PROD-0035",
+    "name": "Enterprise Hardware Model 35 - Edition J",
+    "slug": "enterprise-hardware-model-35",
+    "description": "High reliability professional grade component model 35 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 13250,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 80,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 135000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000036",
+    "sku": "SKU-PROD-0036",
+    "name": "Enterprise Hardware Model 36 - Edition K",
+    "slug": "enterprise-hardware-model-36",
+    "description": "High reliability professional grade component model 36 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 13600,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 81,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 136000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000037",
+    "sku": "SKU-PROD-0037",
+    "name": "Enterprise Hardware Model 37 - Edition L",
+    "slug": "enterprise-hardware-model-37",
+    "description": "High reliability professional grade component model 37 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 13950,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 82,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 137000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000038",
+    "sku": "SKU-PROD-0038",
+    "name": "Enterprise Hardware Model 38 - Edition M",
+    "slug": "enterprise-hardware-model-38",
+    "description": "High reliability professional grade component model 38 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 14300,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 83,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 138000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000039",
+    "sku": "SKU-PROD-0039",
+    "name": "Enterprise Hardware Model 39 - Edition N",
+    "slug": "enterprise-hardware-model-39",
+    "description": "High reliability professional grade component model 39 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 14650,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 84,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 139000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000040",
+    "sku": "SKU-PROD-0040",
+    "name": "Enterprise Hardware Model 40 - Edition O",
+    "slug": "enterprise-hardware-model-40",
+    "description": "High reliability professional grade component model 40 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 15000,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 85,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 140000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000041",
+    "sku": "SKU-PROD-0041",
+    "name": "Enterprise Hardware Model 41 - Edition P",
+    "slug": "enterprise-hardware-model-41",
+    "description": "High reliability professional grade component model 41 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 15350,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 86,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 141000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000042",
+    "sku": "SKU-PROD-0042",
+    "name": "Enterprise Hardware Model 42 - Edition Q",
+    "slug": "enterprise-hardware-model-42",
+    "description": "High reliability professional grade component model 42 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 15700,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 87,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 142000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000043",
+    "sku": "SKU-PROD-0043",
+    "name": "Enterprise Hardware Model 43 - Edition R",
+    "slug": "enterprise-hardware-model-43",
+    "description": "High reliability professional grade component model 43 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 16050,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 88,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 143000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000044",
+    "sku": "SKU-PROD-0044",
+    "name": "Enterprise Hardware Model 44 - Edition S",
+    "slug": "enterprise-hardware-model-44",
+    "description": "High reliability professional grade component model 44 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 16400,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 89,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 144000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000045",
+    "sku": "SKU-PROD-0045",
+    "name": "Enterprise Hardware Model 45 - Edition T",
+    "slug": "enterprise-hardware-model-45",
+    "description": "High reliability professional grade component model 45 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 16750,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 90,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 145000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000046",
+    "sku": "SKU-PROD-0046",
+    "name": "Enterprise Hardware Model 46 - Edition U",
+    "slug": "enterprise-hardware-model-46",
+    "description": "High reliability professional grade component model 46 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 17100,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 91,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 146000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000047",
+    "sku": "SKU-PROD-0047",
+    "name": "Enterprise Hardware Model 47 - Edition V",
+    "slug": "enterprise-hardware-model-47",
+    "description": "High reliability professional grade component model 47 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 17450,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 92,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 147000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000048",
+    "sku": "SKU-PROD-0048",
+    "name": "Enterprise Hardware Model 48 - Edition W",
+    "slug": "enterprise-hardware-model-48",
+    "description": "High reliability professional grade component model 48 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 17800,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 93,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 148000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000049",
+    "sku": "SKU-PROD-0049",
+    "name": "Enterprise Hardware Model 49 - Edition X",
+    "slug": "enterprise-hardware-model-49",
+    "description": "High reliability professional grade component model 49 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 18150,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 94,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 149000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000050",
+    "sku": "SKU-PROD-0050",
+    "name": "Enterprise Hardware Model 50 - Edition Y",
+    "slug": "enterprise-hardware-model-50",
+    "description": "High reliability professional grade component model 50 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 18500,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 45,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 150000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000051",
+    "sku": "SKU-PROD-0051",
+    "name": "Enterprise Hardware Model 51 - Edition Z",
+    "slug": "enterprise-hardware-model-51",
+    "description": "High reliability professional grade component model 51 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 18850,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 46,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 151000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000052",
+    "sku": "SKU-PROD-0052",
+    "name": "Enterprise Hardware Model 52 - Edition A",
+    "slug": "enterprise-hardware-model-52",
+    "description": "High reliability professional grade component model 52 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 19200,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 47,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 152000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000053",
+    "sku": "SKU-PROD-0053",
+    "name": "Enterprise Hardware Model 53 - Edition B",
+    "slug": "enterprise-hardware-model-53",
+    "description": "High reliability professional grade component model 53 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 19550,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 48,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 153000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000054",
+    "sku": "SKU-PROD-0054",
+    "name": "Enterprise Hardware Model 54 - Edition C",
+    "slug": "enterprise-hardware-model-54",
+    "description": "High reliability professional grade component model 54 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 19900,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 49,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 154000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000055",
+    "sku": "SKU-PROD-0055",
+    "name": "Enterprise Hardware Model 55 - Edition D",
+    "slug": "enterprise-hardware-model-55",
+    "description": "High reliability professional grade component model 55 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 20250,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 50,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 155000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000056",
+    "sku": "SKU-PROD-0056",
+    "name": "Enterprise Hardware Model 56 - Edition E",
+    "slug": "enterprise-hardware-model-56",
+    "description": "High reliability professional grade component model 56 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 20600,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 51,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 156000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000057",
+    "sku": "SKU-PROD-0057",
+    "name": "Enterprise Hardware Model 57 - Edition F",
+    "slug": "enterprise-hardware-model-57",
+    "description": "High reliability professional grade component model 57 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 20950,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 52,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 157000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000058",
+    "sku": "SKU-PROD-0058",
+    "name": "Enterprise Hardware Model 58 - Edition G",
+    "slug": "enterprise-hardware-model-58",
+    "description": "High reliability professional grade component model 58 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 21300,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 53,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 158000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000059",
+    "sku": "SKU-PROD-0059",
+    "name": "Enterprise Hardware Model 59 - Edition H",
+    "slug": "enterprise-hardware-model-59",
+    "description": "High reliability professional grade component model 59 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 21650,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 54,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 159000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000060",
+    "sku": "SKU-PROD-0060",
+    "name": "Enterprise Hardware Model 60 - Edition I",
+    "slug": "enterprise-hardware-model-60",
+    "description": "High reliability professional grade component model 60 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 22000,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 55,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 160000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000061",
+    "sku": "SKU-PROD-0061",
+    "name": "Enterprise Hardware Model 61 - Edition J",
+    "slug": "enterprise-hardware-model-61",
+    "description": "High reliability professional grade component model 61 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 22350,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 56,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 161000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000062",
+    "sku": "SKU-PROD-0062",
+    "name": "Enterprise Hardware Model 62 - Edition K",
+    "slug": "enterprise-hardware-model-62",
+    "description": "High reliability professional grade component model 62 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 22700,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 57,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 162000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000063",
+    "sku": "SKU-PROD-0063",
+    "name": "Enterprise Hardware Model 63 - Edition L",
+    "slug": "enterprise-hardware-model-63",
+    "description": "High reliability professional grade component model 63 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 23050,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 58,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 163000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000064",
+    "sku": "SKU-PROD-0064",
+    "name": "Enterprise Hardware Model 64 - Edition M",
+    "slug": "enterprise-hardware-model-64",
+    "description": "High reliability professional grade component model 64 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 23400,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 59,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 164000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000065",
+    "sku": "SKU-PROD-0065",
+    "name": "Enterprise Hardware Model 65 - Edition N",
+    "slug": "enterprise-hardware-model-65",
+    "description": "High reliability professional grade component model 65 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 23750,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 60,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 165000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000066",
+    "sku": "SKU-PROD-0066",
+    "name": "Enterprise Hardware Model 66 - Edition O",
+    "slug": "enterprise-hardware-model-66",
+    "description": "High reliability professional grade component model 66 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 24100,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 61,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 166000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000067",
+    "sku": "SKU-PROD-0067",
+    "name": "Enterprise Hardware Model 67 - Edition P",
+    "slug": "enterprise-hardware-model-67",
+    "description": "High reliability professional grade component model 67 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 24450,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 62,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 167000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000068",
+    "sku": "SKU-PROD-0068",
+    "name": "Enterprise Hardware Model 68 - Edition Q",
+    "slug": "enterprise-hardware-model-68",
+    "description": "High reliability professional grade component model 68 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 24800,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 63,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 168000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000069",
+    "sku": "SKU-PROD-0069",
+    "name": "Enterprise Hardware Model 69 - Edition R",
+    "slug": "enterprise-hardware-model-69",
+    "description": "High reliability professional grade component model 69 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 25150,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 64,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 169000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000070",
+    "sku": "SKU-PROD-0070",
+    "name": "Enterprise Hardware Model 70 - Edition S",
+    "slug": "enterprise-hardware-model-70",
+    "description": "High reliability professional grade component model 70 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 25500,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 65,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 170000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000071",
+    "sku": "SKU-PROD-0071",
+    "name": "Enterprise Hardware Model 71 - Edition T",
+    "slug": "enterprise-hardware-model-71",
+    "description": "High reliability professional grade component model 71 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 25850,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 66,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 171000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000072",
+    "sku": "SKU-PROD-0072",
+    "name": "Enterprise Hardware Model 72 - Edition U",
+    "slug": "enterprise-hardware-model-72",
+    "description": "High reliability professional grade component model 72 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 26200,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 67,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 172000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000073",
+    "sku": "SKU-PROD-0073",
+    "name": "Enterprise Hardware Model 73 - Edition V",
+    "slug": "enterprise-hardware-model-73",
+    "description": "High reliability professional grade component model 73 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 26550,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 68,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 173000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000074",
+    "sku": "SKU-PROD-0074",
+    "name": "Enterprise Hardware Model 74 - Edition W",
+    "slug": "enterprise-hardware-model-74",
+    "description": "High reliability professional grade component model 74 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 26900,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 69,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 174000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000075",
+    "sku": "SKU-PROD-0075",
+    "name": "Enterprise Hardware Model 75 - Edition X",
+    "slug": "enterprise-hardware-model-75",
+    "description": "High reliability professional grade component model 75 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 27250,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 70,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 175000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000076",
+    "sku": "SKU-PROD-0076",
+    "name": "Enterprise Hardware Model 76 - Edition Y",
+    "slug": "enterprise-hardware-model-76",
+    "description": "High reliability professional grade component model 76 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 27600,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 71,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 176000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000077",
+    "sku": "SKU-PROD-0077",
+    "name": "Enterprise Hardware Model 77 - Edition Z",
+    "slug": "enterprise-hardware-model-77",
+    "description": "High reliability professional grade component model 77 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 27950,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 72,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 177000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000078",
+    "sku": "SKU-PROD-0078",
+    "name": "Enterprise Hardware Model 78 - Edition A",
+    "slug": "enterprise-hardware-model-78",
+    "description": "High reliability professional grade component model 78 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 28300,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 73,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 178000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000079",
+    "sku": "SKU-PROD-0079",
+    "name": "Enterprise Hardware Model 79 - Edition B",
+    "slug": "enterprise-hardware-model-79",
+    "description": "High reliability professional grade component model 79 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 28650,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 74,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 179000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000080",
+    "sku": "SKU-PROD-0080",
+    "name": "Enterprise Hardware Model 80 - Edition C",
+    "slug": "enterprise-hardware-model-80",
+    "description": "High reliability professional grade component model 80 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 29000,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 75,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 180000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000081",
+    "sku": "SKU-PROD-0081",
+    "name": "Enterprise Hardware Model 81 - Edition D",
+    "slug": "enterprise-hardware-model-81",
+    "description": "High reliability professional grade component model 81 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 29350,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 76,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 181000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000082",
+    "sku": "SKU-PROD-0082",
+    "name": "Enterprise Hardware Model 82 - Edition E",
+    "slug": "enterprise-hardware-model-82",
+    "description": "High reliability professional grade component model 82 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 29700,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 77,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 182000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000083",
+    "sku": "SKU-PROD-0083",
+    "name": "Enterprise Hardware Model 83 - Edition F",
+    "slug": "enterprise-hardware-model-83",
+    "description": "High reliability professional grade component model 83 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 30050,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 78,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 183000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000084",
+    "sku": "SKU-PROD-0084",
+    "name": "Enterprise Hardware Model 84 - Edition G",
+    "slug": "enterprise-hardware-model-84",
+    "description": "High reliability professional grade component model 84 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 30400,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 79,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 184000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000085",
+    "sku": "SKU-PROD-0085",
+    "name": "Enterprise Hardware Model 85 - Edition H",
+    "slug": "enterprise-hardware-model-85",
+    "description": "High reliability professional grade component model 85 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 30750,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 80,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 185000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000086",
+    "sku": "SKU-PROD-0086",
+    "name": "Enterprise Hardware Model 86 - Edition I",
+    "slug": "enterprise-hardware-model-86",
+    "description": "High reliability professional grade component model 86 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 31100,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 81,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 186000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000087",
+    "sku": "SKU-PROD-0087",
+    "name": "Enterprise Hardware Model 87 - Edition J",
+    "slug": "enterprise-hardware-model-87",
+    "description": "High reliability professional grade component model 87 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 31450,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 82,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 187000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000088",
+    "sku": "SKU-PROD-0088",
+    "name": "Enterprise Hardware Model 88 - Edition K",
+    "slug": "enterprise-hardware-model-88",
+    "description": "High reliability professional grade component model 88 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 31800,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 83,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 188000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000089",
+    "sku": "SKU-PROD-0089",
+    "name": "Enterprise Hardware Model 89 - Edition L",
+    "slug": "enterprise-hardware-model-89",
+    "description": "High reliability professional grade component model 89 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 32150,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 84,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 189000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000090",
+    "sku": "SKU-PROD-0090",
+    "name": "Enterprise Hardware Model 90 - Edition M",
+    "slug": "enterprise-hardware-model-90",
+    "description": "High reliability professional grade component model 90 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 32500,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 85,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 190000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000091",
+    "sku": "SKU-PROD-0091",
+    "name": "Enterprise Hardware Model 91 - Edition N",
+    "slug": "enterprise-hardware-model-91",
+    "description": "High reliability professional grade component model 91 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-phones",
+    "basePrice": {
+      "amount": 32850,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "phones"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 86,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 191000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000092",
+    "sku": "SKU-PROD-0092",
+    "name": "Enterprise Hardware Model 92 - Edition O",
+    "slug": "enterprise-hardware-model-92",
+    "description": "High reliability professional grade component model 92 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-audio",
+    "basePrice": {
+      "amount": 33200,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "audio"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 87,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 192000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000093",
+    "sku": "SKU-PROD-0093",
+    "name": "Enterprise Hardware Model 93 - Edition P",
+    "slug": "enterprise-hardware-model-93",
+    "description": "High reliability professional grade component model 93 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-displays",
+    "basePrice": {
+      "amount": 33550,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "displays"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 88,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 193000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000094",
+    "sku": "SKU-PROD-0094",
+    "name": "Enterprise Hardware Model 94 - Edition Q",
+    "slug": "enterprise-hardware-model-94",
+    "description": "High reliability professional grade component model 94 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-accessories",
+    "basePrice": {
+      "amount": 33900,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "accessories"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 89,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 194000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000095",
+    "sku": "SKU-PROD-0095",
+    "name": "Enterprise Hardware Model 95 - Edition R",
+    "slug": "enterprise-hardware-model-95",
+    "description": "High reliability professional grade component model 95 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-networking",
+    "basePrice": {
+      "amount": 34250,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "networking"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 90,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 195000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000096",
+    "sku": "SKU-PROD-0096",
+    "name": "Enterprise Hardware Model 96 - Edition S",
+    "slug": "enterprise-hardware-model-96",
+    "description": "High reliability professional grade component model 96 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-smart-home",
+    "basePrice": {
+      "amount": 34600,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "smart-home"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 91,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": true,
+      "mtbfHours": 196000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000097",
+    "sku": "SKU-PROD-0097",
+    "name": "Enterprise Hardware Model 97 - Edition T",
+    "slug": "enterprise-hardware-model-97",
+    "description": "High reliability professional grade component model 97 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-gaming",
+    "basePrice": {
+      "amount": 34950,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "gaming"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 92,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": false,
+      "mtbfHours": 197000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000098",
+    "sku": "SKU-PROD-0098",
+    "name": "Enterprise Hardware Model 98 - Edition U",
+    "slug": "enterprise-hardware-model-98",
+    "description": "High reliability professional grade component model 98 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-storage",
+    "basePrice": {
+      "amount": 35300,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "storage"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 93,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 198000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000099",
+    "sku": "SKU-PROD-0099",
+    "name": "Enterprise Hardware Model 99 - Edition V",
+    "slug": "enterprise-hardware-model-99",
+    "description": "High reliability professional grade component model 99 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-wearables",
+    "basePrice": {
+      "amount": 35650,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "wearables"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 94,
+      "formFactor": "Compact Desktop",
+      "isHotSwappable": true,
+      "mtbfHours": 199000
+    }
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000100",
+    "sku": "SKU-PROD-0100",
+    "name": "Enterprise Hardware Model 100 - Edition W",
+    "slug": "enterprise-hardware-model-100",
+    "description": "High reliability professional grade component model 100 with 3-year enterprise warranty and low-latency throughput support.",
+    "categoryId": "cat-laptops",
+    "basePrice": {
+      "amount": 36000,
+      "currency": "USD"
+    },
+    "isActive": true,
+    "tags": [
+      "hardware",
+      "enterprise",
+      "laptops"
+    ],
+    "attributes": {
+      "powerConsumptionWatts": 45,
+      "formFactor": "Standard 1U",
+      "isHotSwappable": false,
+      "mtbfHours": 200000
+    }
+  }
+]

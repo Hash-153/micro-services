@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Fulfillment & Logistics Service
+  version: 1.0.0
+  description: Exhaustive OpenAPI 3.0 specification for Fulfillment & Logistics Service with comprehensive schema validation.
+servers:
+  - url: http://localhost:8000/api/v1/fulfillment
+    description: API Gateway Proxy
+paths:
+  /fulfillment/shipments:
+    post:
+      summary: Generate shipment & tracking
+      operationId: fulfillment_post__fulfillment_shipments
+      tags:
+        - Fulfillment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /fulfillment/shipments/{id}:
+    get:
+      summary: Get shipment tracking status
+      operationId: fulfillment_get__fulfillment_shipments_id
+      tags:
+        - Fulfillment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /fulfillment/rates:
+    post:
+      summary: Calculate carrier shipping rates
+      operationId: fulfillment_post__fulfillment_rates
+      tags:
+        - Fulfillment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /fulfillment/pack:
+    post:
+      summary: Optimize 3D package packing
+      operationId: fulfillment_post__fulfillment_pack
+      tags:
+        - Fulfillment
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error

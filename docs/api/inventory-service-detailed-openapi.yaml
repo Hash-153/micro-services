@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Inventory & Stock Service
+  version: 1.0.0
+  description: Exhaustive OpenAPI 3.0 specification for Inventory & Stock Service with comprehensive schema validation.
+servers:
+  - url: http://localhost:8000/api/v1/inventory
+    description: API Gateway Proxy
+paths:
+  /inventory/stock:
+    post:
+      summary: Set warehouse stock level
+      operationId: inventory_post__inventory_stock
+      tags:
+        - Inventory
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /inventory/stock/{sku}:
+    get:
+      summary: Get real-time stock level
+      operationId: inventory_get__inventory_stock_sku
+      tags:
+        - Inventory
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /inventory/reserve:
+    post:
+      summary: Reserve stock for order
+      operationId: inventory_post__inventory_reserve
+      tags:
+        - Inventory
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /inventory/release:
+    post:
+      summary: Release expired reservation
+      operationId: inventory_post__inventory_release
+      tags:
+        - Inventory
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /inventory/reorder-advice:
+    get:
+      summary: Calculate reorder parameters
+      operationId: inventory_get__inventory_reorder-advice
+      tags:
+        - Inventory
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error

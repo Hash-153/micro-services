@@ -1,0 +1,44 @@
+[
+  {
+    "carrier": "FEDEX",
+    "service": "GROUND",
+    "baseRateCents": 850,
+    "perKgRateCents": 150,
+    "estimatedDays": 3
+  },
+  {
+    "carrier": "FEDEX",
+    "service": "EXPRESS_2DAY",
+    "baseRateCents": 1850,
+    "perKgRateCents": 300,
+    "estimatedDays": 2
+  },
+  {
+    "carrier": "FEDEX",
+    "service": "OVERNIGHT",
+    "baseRateCents": 3450,
+    "perKgRateCents": 550,
+    "estimatedDays": 1
+  },
+  {
+    "carrier": "UPS",
+    "service": "GROUND",
+    "baseRateCents": 820,
+    "perKgRateCents": 140,
+    "estimatedDays": 3
+  },
+  {
+    "carrier": "UPS",
+    "service": "NEXT_DAY_AIR",
+    "baseRateCents": 3500,
+    "perKgRateCents": 520,
+    "estimatedDays": 1
+  },
+  {
+    "carrier": "DHL",
+    "service": "EXPRESS_WORLDWIDE",
+    "baseRateCents": 4200,
+    "perKgRateCents": 750,
+    "estimatedDays": 2
+  }
+]

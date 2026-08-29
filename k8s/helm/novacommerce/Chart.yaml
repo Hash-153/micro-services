@@ -1,0 +1,9 @@
+apiVersion: v2
+name: novacommerce
+description: Enterprise Distributed Microservices E-Commerce Platform Helm Chart
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+  - name: NovaCommerce SRE
+    email: sre@novacommerce.io

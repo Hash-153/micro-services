@@ -1,0 +1,162 @@
+[
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000001",
+    "code": "WH-US-EAST-01",
+    "name": "New York Fulfillment Hub",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "address": {
+      "streetLine1": "100 Logistics Parkway",
+      "city": "New",
+      "stateOrProvince": "NY",
+      "postalCode": "10000",
+      "countryCode": "US"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000002",
+    "code": "WH-US-WEST-01",
+    "name": "San Francisco Logistics Center",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "address": {
+      "streetLine1": "115 Logistics Parkway",
+      "city": "San",
+      "stateOrProvince": "CA",
+      "postalCode": "10050",
+      "countryCode": "US"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000003",
+    "code": "WH-US-CENT-01",
+    "name": "Chicago Distribution Facility",
+    "latitude": 41.8781,
+    "longitude": -87.6298,
+    "address": {
+      "streetLine1": "130 Logistics Parkway",
+      "city": "Chicago",
+      "stateOrProvince": "IL",
+      "postalCode": "10100",
+      "countryCode": "US"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000004",
+    "code": "WH-US-SOUTH-01",
+    "name": "Dallas Distribution Hub",
+    "latitude": 32.7767,
+    "longitude": -96.797,
+    "address": {
+      "streetLine1": "145 Logistics Parkway",
+      "city": "Dallas",
+      "stateOrProvince": "TX",
+      "postalCode": "10150",
+      "countryCode": "US"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000005",
+    "code": "WH-EU-CENT-01",
+    "name": "Frankfurt Master Terminal",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "address": {
+      "streetLine1": "160 Logistics Parkway",
+      "city": "Frankfurt",
+      "stateOrProvince": "HE",
+      "postalCode": "10200",
+      "countryCode": "DE"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000006",
+    "code": "WH-EU-WEST-01",
+    "name": "London Heathrow Depot",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "address": {
+      "streetLine1": "175 Logistics Parkway",
+      "city": "London",
+      "stateOrProvince": "ENG",
+      "postalCode": "10250",
+      "countryCode": "GB"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000007",
+    "code": "WH-EU-NORTH-01",
+    "name": "Amsterdam Schiphol Gateway",
+    "latitude": 52.3676,
+    "longitude": 4.9041,
+    "address": {
+      "streetLine1": "190 Logistics Parkway",
+      "city": "Amsterdam",
+      "stateOrProvince": "NH",
+      "postalCode": "10300",
+      "countryCode": "NL"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000008",
+    "code": "WH-APAC-EAST-01",
+    "name": "Tokyo Narita Logistics Park",
+    "latitude": 35.6762,
+    "longitude": 139.6503,
+    "address": {
+      "streetLine1": "205 Logistics Parkway",
+      "city": "Tokyo",
+      "stateOrProvince": "TK",
+      "postalCode": "10350",
+      "countryCode": "JP"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000009",
+    "code": "WH-APAC-SOUTH-01",
+    "name": "Singapore Changi Hub",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "address": {
+      "streetLine1": "220 Logistics Parkway",
+      "city": "Singapore",
+      "stateOrProvince": "SG",
+      "postalCode": "10400",
+      "countryCode": "SG"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  },
+  {
+    "id": "wh-00000000-0000-0000-0000-000000000010",
+    "code": "WH-APAC-AUST-01",
+    "name": "Sydney Botany Terminal",
+    "latitude": -33.8688,
+    "longitude": 151.2093,
+    "address": {
+      "streetLine1": "235 Logistics Parkway",
+      "city": "Sydney",
+      "stateOrProvince": "NSW",
+      "postalCode": "10450",
+      "countryCode": "AU"
+    },
+    "capacityScore": 100,
+    "isActive": true
+  }
+]

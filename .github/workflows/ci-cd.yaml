@@ -1,0 +1,84 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-typecheck:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Workspace Typecheck
+        run: npm run typecheck
+
+  unit-tests:
+    name: Unit & Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Shared Packages
+        run: npm run build
+
+      - name: Execute Test Matrix
+        run: npm test
+
+  security-scan:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Audit NPM Dependencies
+        run: npm audit --audit-level=high
+
+  docker-build-verification:
+    name: Docker Container Build Verification
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck, unit-tests]
+    strategy:
+      matrix:
+        service:
+          - api-gateway
+          - auth-service
+          - user-service
+          - catalog-service
+          - order-service
+          - payment-service
+          - fulfillment-service
+          - notification-service
+          - analytics-service
+          - inventory-service
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Container
+        run: |
+          docker build -f services/${{ matrix.service }}/Dockerfile -t novacommerce/${{ matrix.service }}:latest .

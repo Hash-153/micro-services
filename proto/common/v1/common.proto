@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package novacommerce.common.v1;
+
+enum Currency {
+  CURRENCY_UNSPECIFIED = 0;
+  CURRENCY_USD = 1;
+  CURRENCY_EUR = 2;
+  CURRENCY_GBP = 3;
+  CURRENCY_CAD = 4;
+  CURRENCY_AUD = 5;
+  CURRENCY_JPY = 6;
+}
+
+message Money {
+  int64 amount = 1; // minor units (e.g. cents)
+  Currency currency = 2;
+}
+
+message Address {
+  string recipient_name = 1;
+  string street_line1 = 2;
+  string street_line2 = 3;
+  string city = 4;
+  string state_province = 5;
+  string postal_code = 6;
+  string country_code = 7;
+}
+
+message PaginationRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message PaginationMetadata {
+  int32 page = 1;
+  int32 limit = 2;
+  int64 total_items = 3;
+  int32 total_pages = 4;
+}

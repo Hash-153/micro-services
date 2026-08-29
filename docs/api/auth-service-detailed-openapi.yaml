@@ -1,0 +1,177 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Auth & IAM Service
+  version: 1.0.0
+  description: Exhaustive OpenAPI 3.0 specification for Auth & IAM Service with comprehensive schema validation.
+servers:
+  - url: http://localhost:8000/api/v1/auth
+    description: API Gateway Proxy
+paths:
+  /register:
+    post:
+      summary: Register new user account
+      operationId: auth_post__register
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /login:
+    post:
+      summary: Authenticate user credentials
+      operationId: auth_post__login
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /refresh:
+    post:
+      summary: Refresh JWT access token
+      operationId: auth_post__refresh
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /me:
+    get:
+      summary: Get current user profile
+      operationId: auth_get__me
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /mfa/setup:
+    post:
+      summary: Initiate MFA enrollment
+      operationId: auth_post__mfa_setup
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /mfa/verify:
+    post:
+      summary: Verify MFA token
+      operationId: auth_post__mfa_verify
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /password/reset-request:
+    post:
+      summary: Request password reset email
+      operationId: auth_post__password_reset-request
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /password/reset-confirm:
+    post:
+      summary: Confirm password reset
+      operationId: auth_post__password_reset-confirm
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request / validation error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Resource not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error

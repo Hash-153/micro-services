@@ -1,0 +1,15 @@
+openapi: 3.0.3
+info:
+  title: NovaCommerce Analytics Service API
+  version: 1.0.0
+  description: OpenAPI 3.0 Specification for NovaCommerce Analytics Microservice
+servers:
+  - url: http://localhost:8000/api/v1/analytics
+    description: Local API Gateway Proxy
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        '200':
+          description: Service is healthy and operational

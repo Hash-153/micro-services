@@ -1,0 +1,25 @@
+# ADR-102: Distributed Tracing Context Propagation in Asynchronous Workers
+
+## Status
+**ACCEPTED** (Date: 2026-08-29)
+
+## Context & Problem Statement
+Operating an enterprise-grade distributed microservices architecture across high-throughput global commerce systems requires formalized architectural guidelines to ensure scalability, security, and zero data loss.
+
+## Decision
+We formally adopt **Distributed Tracing Context Propagation in Asynchronous Workers**.
+Ensure RabbitMQ consumer worker threads extract and continue trace spans from message headers.
+
+### Key Principles:
+1. **Zero Data Loss**: Every financial transaction and inventory allocation is guaranteed by ACID transactions and distributed saga compensation.
+2. **Deterministic Behavior**: State transitions follow validated mathematical state machines and cryptographic invariant checks.
+3. **Observability**: Distributed traces, structured JSON telemetry, and Prometheus metrics provide real-time operational visibility.
+
+## Consequences & Trade-offs
+### Positive:
+- Exceptional system reliability, predictability, and horizontal scalability.
+- Clear engineering boundaries facilitating high velocity across distributed teams.
+- Full compliance with enterprise security, SOX, and PCI-DSS standards.
+
+### Negative:
+- Strict architectural discipline required during code reviews and continuous integration gates.
