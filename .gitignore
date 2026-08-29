@@ -42,6 +42,10 @@ yarn-error.log*
 # IDE & OS
 .vscode/
 .idea/
+# Archives
+*.zip
+*.tar.gz
+novacommerce-microservices/
 *.swp
 *.swo
 .DS_Store
