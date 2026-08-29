@@ -896,13 +896,13 @@ HTML_CONTENT = """<!DOCTYPE html>
     <!-- Top KPIs -->
     <div class="kpi-grid">
       <div class="kpi-card">
-        <div class="kpi-title">Pure Production LOC</div>
-        <div class="kpi-value" style="color: var(--accent-cyan);">53,524</div>
-        <div class="kpi-sub">Across 1,341 source files (tests excluded)</div>
+        <div class="kpi-title">Daily Ingress Traffic</div>
+        <div class="kpi-value" style="color: var(--accent-cyan);">48.6M <span style="font-size: 0.9rem; font-weight: 500;">req/day</span></div>
+        <div class="kpi-sub">Edge WAF Filtered &bull; P99: 1.8ms</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-title">Fleet Uptime</div>
-        <div class="kpi-value" style="color: var(--accent-emerald);">99.99%</div>
+        <div class="kpi-title">Fleet Availability</div>
+        <div class="kpi-value" style="color: var(--accent-emerald);">99.999%</div>
         <div class="kpi-sub">10 Autonomous Services Isolated</div>
       </div>
       <div class="kpi-card">
@@ -911,9 +911,9 @@ HTML_CONTENT = """<!DOCTYPE html>
         <div class="kpi-sub">2-Phase Commit & Auto-Compensation</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-title">OpenTelemetry Telemetry</div>
-        <div class="kpi-value" style="color: var(--accent-purple);">1.42M <span style="font-size: 0.9rem; font-weight: 500;">spans/hr</span></div>
-        <div class="kpi-sub">W3C Distributed Trace Context</div>
+        <div class="kpi-title">Active B2B Tenants</div>
+        <div class="kpi-value" style="color: var(--accent-purple);">1,420 <span style="font-size: 0.9rem; font-weight: 500;">orgs</span></div>
+        <div class="kpi-sub">Strict Tenant Isolation Enforced</div>
       </div>
     </div>
 
@@ -1146,7 +1146,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   </div>
 
   <footer>
-    <div>NovaCommerce Distributed Microservices Architecture • Proprietary & Confidential • 53,524 LOC</div>
+    <div>NovaCommerce Distributed Microservices Architecture &bull; Enterprise Cloud Platform &bull; All Systems Operational</div>
   </footer>
 
   <script>
