@@ -1,130 +1,121 @@
-import { Money, Currency } from '@novacommerce/core-types';
-
-export enum DiscountType {
-  PERCENTAGE = 'PERCENTAGE',
-  FIXED_AMOUNT = 'FIXED_AMOUNT',
-  FREE_SHIPPING = 'FREE_SHIPPING',
-  BUY_X_GET_Y_FREE = 'BUY_X_GET_Y_FREE',
-  TIERED_VOLUME = 'TIERED_VOLUME'
-}
-
 export interface CouponRule {
   code: string;
-  type: DiscountType;
-  value: number; // Percentage (e.g. 15 for 15%) or Fixed Minor Units (e.g. 1000 for $10.00)
-  minimumCartAmountCents: number;
+  discountType: 'PERCENTAGE' | 'FIXED_AMOUNT' | 'FREE_SHIPPING';
+  discountValue: number; // e.g. 15 for 15% or 1000 for $10.00
+  minimumOrderValueCents: number;
   maximumDiscountCents?: number;
-  applicableSkuList?: string[];
-  applicableCategoryIds?: string[];
-  maxUsageLimit: number;
-  currentUsageCount: number;
   validFrom: Date;
   validUntil: Date;
+  usageLimit: number;
+  currentUsageCount: number;
+  applicableSkus?: string[];
   isActive: boolean;
 }
 
-export interface CartItemForDiscount {
-  sku: string;
-  categoryId: string;
-  unitPriceCents: number;
-  quantity: number;
-}
-
-export interface DiscountCalculationResult {
-  discountAmountCents: number;
-  isFreeShipping: boolean;
+export interface DiscountResult {
   couponCode: string;
-  appliedRuleType: DiscountType;
-  explanation: string;
+  discountAmountCents: number;
+  isShippingFree: boolean;
+  message: string;
 }
 
-export class PromotionEngine {
-  private readonly coupons: Map<string, CouponRule> = new Map();
+export class PromotionsEngine {
+  private rules: Map<string, CouponRule> = new Map();
 
-  public registerCoupon(rule: CouponRule): void {
-    this.coupons.set(rule.code.toUpperCase(), rule);
+  constructor() {
+    this.registerDefaultCoupons();
   }
 
-  public evaluateCoupon(
-    code: string,
-    cartItems: CartItemForDiscount[],
-    subtotalCents: number,
-    now: Date = new Date()
-  ): DiscountCalculationResult {
-    const coupon = this.coupons.get(code.toUpperCase());
-    if (!coupon) {
-      throw new Error(`Coupon '${code}' is invalid or expired.`);
+  private registerDefaultCoupons(): void {
+    this.registerCoupon({
+      code: 'WELCOME10',
+      discountType: 'PERCENTAGE',
+      discountValue: 10,
+      minimumOrderValueCents: 2000,
+      validFrom: new Date('2026-01-01'),
+      validUntil: new Date('2026-12-31'),
+      usageLimit: 100000,
+      currentUsageCount: 420,
+      isActive: true
+    });
+
+    this.registerCoupon({
+      code: 'SUMMERSALE25',
+      discountType: 'PERCENTAGE',
+      discountValue: 25,
+      minimumOrderValueCents: 5000,
+      maximumDiscountCents: 5000,
+      validFrom: new Date('2026-06-01'),
+      validUntil: new Date('2026-09-30'),
+      usageLimit: 50000,
+      currentUsageCount: 1520,
+      isActive: true
+    });
+
+    this.registerCoupon({
+      code: 'FREESHIP',
+      discountType: 'FREE_SHIPPING',
+      discountValue: 0,
+      minimumOrderValueCents: 3500,
+      validFrom: new Date('2026-01-01'),
+      validUntil: new Date('2026-12-31'),
+      usageLimit: 200000,
+      currentUsageCount: 8900,
+      isActive: true
+    });
+  }
+
+  public registerCoupon(rule: CouponRule): void {
+    this.rules.set(rule.code.toUpperCase().trim(), rule);
+  }
+
+  public applyCoupon(code: string, subtotalCents: number, shippingFeeCents: number): DiscountResult {
+    const cleanCode = code.toUpperCase().trim();
+    const rule = this.rules.get(cleanCode);
+
+    if (!rule) {
+      throw new Error(`Invalid promotion code: ${code}`);
     }
 
-    if (!coupon.isActive) {
-      throw new Error(`Coupon '${code}' is deactivated.`);
+    if (!rule.isActive) {
+      throw new Error(`Promotion code ${code} is no longer active`);
     }
 
-    if (now < coupon.validFrom || now > coupon.validUntil) {
-      throw new Error(`Coupon '${code}' is outside its valid promotion window.`);
+    const now = new Date();
+    if (now < rule.validFrom || now > rule.validUntil) {
+      throw new Error(`Promotion code ${code} has expired`);
     }
 
-    if (coupon.currentUsageCount >= coupon.maxUsageLimit) {
-      throw new Error(`Coupon '${code}' has reached its maximum global redemption limit.`);
+    if (rule.currentUsageCount >= rule.usageLimit) {
+      throw new Error(`Promotion code ${code} usage limit reached`);
     }
 
-    if (subtotalCents < coupon.minimumCartAmountCents) {
-      throw new Error(
-        `Coupon '${code}' requires a minimum cart subtotal of \$${(coupon.minimumCartAmountCents / 100).toFixed(2)}.`
-      );
+    if (subtotalCents < rule.minimumOrderValueCents) {
+      throw new Error(`Order minimum of $${(rule.minimumOrderValueCents / 100).toFixed(2)} required for ${code}`);
     }
 
     let discountCents = 0;
     let isFreeShipping = false;
-    let explanation = '';
 
-    switch (coupon.type) {
-      case DiscountType.PERCENTAGE: {
-        const rawDiscount = Math.round((subtotalCents * coupon.value) / 100);
-        discountCents = coupon.maximumDiscountCents ? Math.min(rawDiscount, coupon.maximumDiscountCents) : rawDiscount;
-        explanation = `Applied ${coupon.value}% discount (-$${(discountCents / 100).toFixed(2)})`;
-        break;
+    if (rule.discountType === 'PERCENTAGE') {
+      discountCents = Math.round((subtotalCents * rule.discountValue) / 100);
+      if (rule.maximumDiscountCents && discountCents > rule.maximumDiscountCents) {
+        discountCents = rule.maximumDiscountCents;
       }
-      case DiscountType.FIXED_AMOUNT: {
-        discountCents = Math.min(subtotalCents, coupon.value);
-        explanation = `Applied flat discount (-$${(discountCents / 100).toFixed(2)})`;
-        break;
-      }
-      case DiscountType.FREE_SHIPPING: {
-        isFreeShipping = true;
-        explanation = 'Applied 100% free standard ground shipping voucher.';
-        break;
-      }
-      case DiscountType.BUY_X_GET_Y_FREE: {
-        // Buy 2 Get 1 Free on matching SKUs
-        for (const item of cartItems) {
-          if (coupon.applicableSkuList?.includes(item.sku) && item.quantity >= 3) {
-            const freeItems = Math.floor(item.quantity / 3);
-            const saved = freeItems * item.unitPriceCents;
-            discountCents += saved;
-          }
-        }
-        explanation = `Applied Buy 2 Get 1 Free promotion (-$${(discountCents / 100).toFixed(2)})`;
-        break;
-      }
-      case DiscountType.TIERED_VOLUME: {
-        const totalItemsCount = cartItems.reduce((acc, i) => acc + i.quantity, 0);
-        let tierPercent = 0;
-        if (totalItemsCount >= 10) tierPercent = 20;
-        else if (totalItemsCount >= 5) tierPercent = 10;
-
-        discountCents = Math.round((subtotalCents * tierPercent) / 100);
-        explanation = `Applied volume tier discount of ${tierPercent}% (-$${(discountCents / 100).toFixed(2)})`;
-        break;
-      }
+    } else if (rule.discountType === 'FIXED_AMOUNT') {
+      discountCents = Math.min(rule.discountValue, subtotalCents);
+    } else if (rule.discountType === 'FREE_SHIPPING') {
+      isFreeShipping = true;
+      discountCents = shippingFeeCents;
     }
 
+    rule.currentUsageCount++;
+
     return {
+      couponCode: cleanCode,
       discountAmountCents: discountCents,
-      isFreeShipping,
-      couponCode: coupon.code,
-      appliedRuleType: coupon.type,
-      explanation
+      isShippingFree: isFreeShipping,
+      message: `Coupon ${cleanCode} applied successfully.`
     };
   }
 }
