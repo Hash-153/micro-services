@@ -1,11 +1,12 @@
 import os
 
-def count_lines(directory="."):
+def count_lines(directory=".", prod_only=False):
     extensions = {
         ".ts", ".js", ".py", ".sql", ".json", ".yaml", ".yml",
         ".md", ".proto", ".sh", ".toml"
     }
     exclude_dirs = {"node_modules", "dist", ".git", ".idea", ".vscode", "coverage", "__pycache__"}
+    exclude_files = {"test", "spec", "fixture"} if prod_only else set()
     
     total_lines = 0
     file_counts = {}
@@ -14,6 +15,10 @@ def count_lines(directory="."):
     for root, dirs, files in os.walk(directory):
         dirs[:] = [d for d in dirs if d not in exclude_dirs]
         for f in files:
+            # Skip test files if prod_only is True
+            if prod_only and any(exclude in f.lower() for exclude in exclude_files):
+                continue
+                
             ext = os.path.splitext(f)[1].lower()
             if ext in extensions or f in {".gitignore", ".env.example", "Dockerfile", "LICENSE"}:
                 path = os.path.join(root, f)
@@ -37,4 +42,6 @@ def count_lines(directory="."):
     return total_lines
 
 if __name__ == "__main__":
-    count_lines()
+    import sys
+    prod_only = "--prod-only" in sys.argv
+    count_lines(prod_only=prod_only)

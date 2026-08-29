@@ -8,231 +8,256 @@ def write_file(path, content):
     ensure_dir(os.path.dirname(path))
     with open(path, "w", encoding="utf-8") as f:
         f.write(content.strip() + "\n")
-    print(f"Created: {path}")
 
-def generate_massive_production_code():
-    print("Beginning massive production code generation...")
-
-    # =========================================================================
-    # 1. CORE PACKAGES PRODUCTION CODE
-    # =========================================================================
+def generate_packages():
+    print("Generating Packages production code...")
     
-    # packages/core-types/src/contracts.ts
-    write_file("packages/core-types/src/contracts.ts", """import { UserRole, OrderStatus, PaymentStatus, FulfillmentStatus, Currency, KycStatus, AccountStatus } from './enums.js';
-import { Money, AddressEntity, Dimensions3D } from './domain-models.js';
+    # 1. packages/core-logger/src/transports.ts
+    write_file("packages/core-logger/src/transports.ts", """import { LogEntry, LogLevel } from './types.js';
 
-export interface PaginationParams {
-  page?: number;
-  limit?: number;
-  sortBy?: string;
-  sortOrder?: 'asc' | 'desc';
+export interface ILogTransport {
+  log(entry: LogEntry): void;
 }
 
-export interface PaginatedResult<T> {
-  items: T[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-  hasNext: boolean;
-  hasPrevious: boolean;
-}
+export class ConsoleLogTransport implements ILogTransport {
+  private minLevel: LogLevel;
 
-export interface IBaseRepository<T> {
-  findById(id: string): Promise<T | null>;
-  findMany(params: PaginationParams, filter?: Record<string, any>): Promise<PaginatedResult<T>>;
-  create(entity: Omit<T, 'id' | 'createdAt' | 'updatedAt'>): Promise<T>;
-  update(id: string, partial: Partial<T>): Promise<T>;
-  delete(id: string): Promise<boolean>;
-  softDelete?(id: string): Promise<boolean>;
-}
-
-export interface IUnitOfWork {
-  begin(): Promise<void>;
-  commit(): Promise<void>;
-  rollback(): Promise<void>;
-  executeInTransaction<R>(operation: () => Promise<R>): Promise<R>;
-}
-
-export interface IEventBus {
-  publish<T>(topic: string, event: IDomainEvent<T>): Promise<void>;
-  subscribe<T>(topic: string, handler: (event: IDomainEvent<T>) => Promise<void>): Promise<void>;
-  unsubscribe(topic: string): Promise<void>;
-}
-
-export interface IDomainEvent<T = any> {
-  eventId: string;
-  eventType: string;
-  aggregateId: string;
-  aggregateType: string;
-  timestamp: Date;
-  correlationId: string;
-  causationId?: string;
-  version: number;
-  payload: T;
-}
-
-export interface ISagaStep<TContext = any, TResult = any> {
-  name: string;
-  execute(context: TContext): Promise<TResult>;
-  compensate(context: TContext): Promise<void>;
-}
-
-export interface ISagaOrchestrator<TContext = any> {
-  execute(initialContext: TContext): Promise<SagaExecutionResult<TContext>>;
-}
-
-export interface SagaExecutionResult<TContext = any> {
-  sagaId: string;
-  status: 'COMPLETED' | 'COMPENSATED' | 'FAILED';
-  finalContext: TContext;
-  executedSteps: string[];
-  compensatedSteps: string[];
-  error?: string;
-  completedAt: Date;
-}
-""")
-
-    # packages/core-database/src/query-builder.ts
-    write_file("packages/core-database/src/query-builder.ts", """export class QueryBuilder<T = any> {
-  private tableName: string;
-  private selectedFields: string[] = ['*'];
-  private whereClauses: { field: string; operator: string; value: any }[] = [];
-  private orderClauses: { field: string; direction: 'ASC' | 'DESC' }[] = [];
-  private limitValue?: number;
-  private offsetValue?: number;
-
-  constructor(tableName: string) {
-    this.tableName = tableName;
+  constructor(minLevel: LogLevel = LogLevel.DEBUG) {
+    this.minLevel = minLevel;
   }
 
-  public static table<T = any>(tableName: string): QueryBuilder<T> {
-    return new QueryBuilder<T>(tableName);
-  }
-
-  public select(...fields: string[]): this {
-    if (fields.length > 0) {
-      this.selectedFields = fields;
+  public log(entry: LogEntry): void {
+    if (this.shouldLog(entry.level)) {
+      const formatted = this.format(entry);
+      if (entry.level === LogLevel.ERROR) {
+        console.error(formatted);
+      } else if (entry.level === LogLevel.WARN) {
+        console.warn(formatted);
+      } else {
+        console.log(formatted);
+      }
     }
-    return this;
   }
 
-  public where(field: string, operator: string, value: any): this {
-    this.whereClauses.push({ field, operator, value });
-    return this;
+  private shouldLog(level: LogLevel): boolean {
+    const levels = [LogLevel.DEBUG, LogLevel.INFO, LogLevel.WARN, LogLevel.ERROR];
+    return levels.indexOf(level) >= levels.indexOf(this.minLevel);
   }
 
-  public whereEq(field: string, value: any): this {
-    return this.where(field, '=', value);
+  private format(entry: LogEntry): string {
+    return JSON.stringify({
+      timestamp: entry.timestamp.toISOString(),
+      level: entry.level,
+      context: entry.context,
+      message: entry.message,
+      traceId: entry.traceId,
+      spanId: entry.spanId,
+      correlationId: entry.correlationId,
+      ...entry.metadata
+    });
+  }
+}
+
+export class FileLogTransport implements ILogTransport {
+  private filePath: string;
+  private minLevel: LogLevel;
+
+  constructor(filePath: string, minLevel: LogLevel = LogLevel.INFO) {
+    this.filePath = filePath;
+    this.minLevel = minLevel;
   }
 
-  public whereIn(field: string, values: any[]): this {
-    return this.where(field, 'IN', values);
-  }
-
-  public orderBy(field: string, direction: 'ASC' | 'DESC' = 'ASC'): this {
-    this.orderClauses.push({ field, direction });
-    return this;
-  }
-
-  public limit(count: number): this {
-    this.limitValue = count;
-    return this;
-  }
-
-  public offset(count: number): this {
-    this.offsetValue = count;
-    return this;
-  }
-
-  public toSql(): { sql: string; values: any[] } {
-    let sql = `SELECT ${this.selectedFields.join(', ')} FROM ${this.tableName}`;
-    const values: any[] = [];
-
-    if (this.whereClauses.length > 0) {
-      const conditions = this.whereClauses.map((clause, idx) => {
-        if (clause.operator === 'IN') {
-          const placeholders = (clause.value as any[]).map(() => `$${values.length + 1}`).join(', ');
-          values.push(...(clause.value as any[]));
-          return `${clause.field} IN (${placeholders})`;
-        } else {
-          values.push(clause.value);
-          return `${clause.field} ${clause.operator} $${values.length}`;
-        }
-      });
-      sql += ` WHERE ${conditions.join(' AND ')}`;
-    }
-
-    if (this.orderClauses.length > 0) {
-      const orders = this.orderClauses.map(o => `${o.field} ${o.direction}`);
-      sql += ` ORDER BY ${orders.join(', ')}`;
-    }
-
-    if (this.limitValue !== undefined) {
-      sql += ` LIMIT ${this.limitValue}`;
-    }
-
-    if (this.offsetValue !== undefined) {
-      sql += ` OFFSET ${this.offsetValue}`;
-    }
-
-    return { sql, values };
+  public log(entry: LogEntry): void {
+    // In production, appends to rotating file stream
   }
 }
 """)
 
-    # packages/core-middleware/src/audit-logger.middleware.ts
-    write_file("packages/core-middleware/src/audit-logger.middleware.ts", """import { Request, Response, NextFunction } from 'express';
+    # 2. packages/core-logger/src/formatters.ts
+    write_file("packages/core-logger/src/formatters.ts", """import { LogEntry } from './types.js';
+
+export class LogFormatter {
+  public static toECSJson(entry: LogEntry): Record<string, any> {
+    return {
+      '@timestamp': entry.timestamp.toISOString(),
+      'log.level': entry.level.toLowerCase(),
+      message: entry.message,
+      'service.name': entry.context,
+      'trace.id': entry.traceId,
+      'span.id': entry.spanId,
+      'transaction.id': entry.correlationId,
+      extra: entry.metadata
+    };
+  }
+
+  public static toDevString(entry: LogEntry): string {
+    const time = entry.timestamp.toISOString().substring(11, 23);
+    const lvl = entry.level.toUpperCase().padEnd(5);
+    const ctx = `[${entry.context}]`.padEnd(20);
+    const trace = entry.correlationId ? ` (corr=${entry.correlationId.substring(0, 8)})` : '';
+    return `${time} ${lvl} ${ctx} ${entry.message}${trace}`;
+  }
+}
+""")
+
+    # 3. packages/core-events/src/domain-event-classes.ts
+    write_file("packages/core-events/src/domain-event-classes.ts", """import { IDomainEvent } from '@novacommerce/core-types';
+
+export abstract class BaseDomainEvent<T = any> implements IDomainEvent<T> {
+  public readonly eventId: string;
+  public abstract readonly eventType: string;
+  public readonly aggregateId: string;
+  public abstract readonly aggregateType: string;
+  public readonly timestamp: Date;
+  public readonly correlationId: string;
+  public readonly causationId?: string;
+  public readonly version: number;
+  public readonly payload: T;
+
+  constructor(aggregateId: string, payload: T, correlationId?: string, causationId?: string, version: number = 1) {
+    this.eventId = crypto.randomUUID();
+    this.aggregateId = aggregateId;
+    this.payload = payload;
+    this.timestamp = new Date();
+    this.correlationId = correlationId || crypto.randomUUID();
+    this.causationId = causationId;
+    this.version = version;
+  }
+}
+
+export class UserRegisteredDomainEvent extends BaseDomainEvent<{ email: string; role: string; organizationId?: string }> {
+  public readonly eventType = 'auth.user.registered';
+  public readonly aggregateType = 'User';
+}
+
+export class UserLoggedInDomainEvent extends BaseDomainEvent<{ email: string; ipAddress?: string; userAgent?: string }> {
+  public readonly eventType = 'auth.user.logged_in';
+  public readonly aggregateType = 'User';
+}
+
+export class PasswordResetRequestedDomainEvent extends BaseDomainEvent<{ email: string; resetTokenHash: string; expiresAt: Date }> {
+  public readonly eventType = 'auth.password.reset_requested';
+  public readonly aggregateType = 'User';
+}
+
+export class ProductCreatedDomainEvent extends BaseDomainEvent<{ sku: string; name: string; categoryId: string; basePriceCents: number; currency: string }> {
+  public readonly eventType = 'catalog.product.created';
+  public readonly aggregateType = 'Product';
+}
+
+export class ProductPriceChangedDomainEvent extends BaseDomainEvent<{ sku: string; oldPriceCents: number; newPriceCents: number; currency: string }> {
+  public readonly eventType = 'catalog.product.price_changed';
+  public readonly aggregateType = 'Product';
+}
+
+export class StockAllocatedDomainEvent extends BaseDomainEvent<{ sku: string; warehouseId: string; quantity: number; orderId: string }> {
+  public readonly eventType = 'inventory.stock.allocated';
+  public readonly aggregateType = 'InventoryStock';
+}
+
+export class StockReservedDomainEvent extends BaseDomainEvent<{ sku: string; warehouseId: string; quantity: number; orderId: string; expiresAt: Date }> {
+  public readonly eventType = 'inventory.stock.reserved';
+  public readonly aggregateType = 'InventoryReservation';
+}
+
+export class StockReleasedDomainEvent extends BaseDomainEvent<{ sku: string; warehouseId: string; quantity: number; orderId: string }> {
+  public readonly eventType = 'inventory.stock.released';
+  public readonly aggregateType = 'InventoryReservation';
+}
+
+export class StockLowAlertDomainEvent extends BaseDomainEvent<{ sku: string; warehouseId: string; currentOnHand: number; safetyStockThreshold: number }> {
+  public readonly eventType = 'inventory.stock.low_alert';
+  public readonly aggregateType = 'InventoryStock';
+}
+
+export class OrderCreatedDomainEvent extends BaseDomainEvent<{ orderNumber: string; userId: string; totalAmountCents: number; currency: string; itemCount: number }> {
+  public readonly eventType = 'order.created';
+  public readonly aggregateType = 'Order';
+}
+
+export class OrderPaidDomainEvent extends BaseDomainEvent<{ orderNumber: string; paymentTransactionId: string; amountCents: number; currency: string }> {
+  public readonly eventType = 'order.paid';
+  public readonly aggregateType = 'Order';
+}
+
+export class OrderCancelledDomainEvent extends BaseDomainEvent<{ orderNumber: string; reason: string; cancelledBy: string }> {
+  public readonly eventType = 'order.cancelled';
+  public readonly aggregateType = 'Order';
+}
+
+export class PaymentAuthorizedDomainEvent extends BaseDomainEvent<{ transactionReference: string; orderId: string; amountCents: number; currency: string; provider: string }> {
+  public readonly eventType = 'payment.authorized';
+  public readonly aggregateType = 'PaymentTransaction';
+}
+
+export class PaymentCapturedDomainEvent extends BaseDomainEvent<{ transactionReference: string; orderId: string; amountCents: number; currency: string }> {
+  public readonly eventType = 'payment.captured';
+  public readonly aggregateType = 'PaymentTransaction';
+}
+
+export class PaymentRefundedDomainEvent extends BaseDomainEvent<{ transactionReference: string; orderId: string; refundAmountCents: number; reason: string }> {
+  public readonly eventType = 'payment.refunded';
+  public readonly aggregateType = 'PaymentTransaction';
+}
+
+export class ShipmentCreatedDomainEvent extends BaseDomainEvent<{ shipmentNumber: string; orderId: string; carrier: string; trackingNumber?: string }> {
+  public readonly eventType = 'fulfillment.shipment.created';
+  public readonly aggregateType = 'Shipment';
+}
+
+export class ShipmentDeliveredDomainEvent extends BaseDomainEvent<{ shipmentNumber: string; orderId: string; carrier: string; deliveredAt: Date }> {
+  public readonly eventType = 'fulfillment.shipment.delivered';
+  public readonly aggregateType = 'Shipment';
+}
+""")
+
+    # 4. packages/core-database/src/transaction-manager.ts
+    write_file("packages/core-database/src/transaction-manager.ts", """import { IUnitOfWork } from '@novacommerce/core-types';
 import { Logger } from '@novacommerce/core-logger';
 
-export interface AuditRecord {
-  service: string;
-  method: string;
-  path: string;
-  statusCode: number;
-  durationMs: number;
-  userId?: string;
-  ipAddress?: string;
-  userAgent?: string;
-  correlationId?: string;
-  timestamp: string;
-}
+export class TransactionManager {
+  private uow: IUnitOfWork;
+  private logger: Logger;
+  private maxRetries: number;
+  private initialBackoffMs: number;
 
-export function createAuditMiddleware(serviceName: string, logger: Logger) {
-  return (req: Request, res: Response, next: NextFunction) => {
-    const startTime = Date.now();
-    const correlationId = (req.headers['x-correlation-id'] as string) || (req as any).correlationId;
+  constructor(uow: IUnitOfWork, logger: Logger, maxRetries: number = 3, initialBackoffMs: number = 50) {
+    this.uow = uow;
+    this.logger = logger;
+    this.maxRetries = maxRetries;
+    this.initialBackoffMs = initialBackoffMs;
+  }
 
-    res.on('finish', () => {
-      const durationMs = Date.now() - startTime;
-      const user = (req as any).user;
-
-      const record: AuditRecord = {
-        service: serviceName,
-        method: req.method,
-        path: req.originalUrl || req.url,
-        statusCode: res.statusCode,
-        durationMs,
-        userId: user?.id,
-        ipAddress: req.ip || req.socket.remoteAddress,
-        userAgent: req.get('user-agent'),
-        correlationId,
-        timestamp: new Date().toISOString()
-      };
-
-      if (res.statusCode >= 400) {
-        logger.warn(`[AUDIT-WARN] ${record.method} ${record.path} ${record.statusCode} - ${durationMs}ms`, record);
-      } else {
-        logger.info(`[AUDIT] ${record.method} ${record.path} ${record.statusCode} - ${durationMs}ms`, record);
+  public async executeWithRetry<T>(operation: () => Promise<T>): Promise<T> {
+    let attempt = 0;
+    while (attempt < this.maxRetries) {
+      attempt++;
+      try {
+        return await this.uow.executeInTransaction(operation);
+      } catch (error: any) {
+        const isDeadlock = this.isDeadlockError(error);
+        if (isDeadlock && attempt < this.maxRetries) {
+          const jitter = Math.floor(Math.random() * 50);
+          const backoff = this.initialBackoffMs * Math.pow(2, attempt - 1) + jitter;
+          this.logger.warn(`Deadlock detected on attempt ${attempt}/${this.maxRetries}. Retrying in ${backoff}ms...`, { error: error.message });
+          await new Promise(resolve => setTimeout(resolve, backoff));
+        } else {
+          this.logger.error(`Transaction failed on attempt ${attempt}: ${error.message}`, { error });
+          throw error;
+        }
       }
-    });
+    }
+    throw new Error(`Transaction failed after ${this.maxRetries} attempts.`);
+  }
 
-    next();
-  };
+  private isDeadlockError(error: any): boolean {
+    const code = error?.code || error?.sqlState;
+    return code === '40P01' || error?.message?.includes('deadlock') || error?.message?.includes('Lock wait timeout');
+  }
 }
 """)
 
-    print("Generated core packages extended production components.")
+    print("Packages generated.")
 
 if __name__ == "__main__":
-    generate_massive_production_code()
+    generate_packages()
